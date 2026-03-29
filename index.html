@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The Hoffman Lenses Initiative — A human rights case for abolishing behavioral manipulation systems. Open-source browser extension. Documentation of algorithmic violence against children.">
+  <meta name="description" content="The Hoffman Lenses Initiative — A human rights case for abolishing behavioral manipulation systems. Open-source browser that makes manipulation visible. Documentation of algorithmic violence against children.">
   <meta property="og:title" content="Hoffman Lenses Initiative">
   <meta property="og:description" content="Making the invisible visible. A human rights case for abolishing behavioral manipulation systems.">
   <meta property="og:type" content="website">
@@ -26,7 +26,7 @@
       </a>
       <ul class="nav-links">
         <li><a href="#case">The Case</a></li>
-        <li><a href="#extension">Extension</a></li>
+        <li><a href="#browser">The Browser</a></li>
         <li><a href="#remembrance">Remembrance</a></li>
         <li><a href="#act">Act</a></li>
         <li><a href="whitepaper.html" class="nav-cta">White Paper</a></li>
@@ -59,9 +59,9 @@
         An open-source tool that shows you exactly what the algorithm is doing to you.
       </p>
       <div class="hero-actions">
-        <a href="#extension" class="btn btn-primary">
+        <a href="#browser" class="btn btn-primary">
           <span class="btn-icon">◎</span>
-          Get the Extension
+          Get the Browser
         </a>
         <a href="whitepaper.html" class="btn btn-secondary">
           Read the White Paper
@@ -191,62 +191,72 @@
     </div>
   </section>
 
-  <!-- EXTENSION -->
-  <section class="section extension-section" id="extension">
+  <!-- THE BROWSER -->
+  <section class="section extension-section" id="browser">
     <div class="container">
-      <div class="section-label">The Tool</div>
+      <div class="section-label">The Browser</div>
       <h2 class="section-title">Put on the glasses.</h2>
       <div class="ext-grid">
         <div class="ext-description">
           <p class="ext-lead">
-            The Hoffman Lenses browser extension overlays real-time annotation on your social 
-            media feeds — showing you exactly what the algorithm is doing to you, as it does it.
+            The Hoffman Browser is a full desktop browser that reads every page you visit
+            the way an expert reads manipulation — not word by word, but all at once,
+            understanding what the language is <em>designed to do</em> to you.
           </p>
           <p>
-            Named for the glasses in John Carpenter's <em>They Live</em> — once you see 
-            the hidden messages, you cannot unsee them. The extension works the same way. 
-            It does not tell you what to think. It shows you what is being done to you, 
+            Named for the glasses in John Carpenter's <em>They Live</em> — once you see
+            the hidden messages, you cannot unsee them. The browser works the same way.
+            It does not tell you what to think. It shows you what is being done to you,
             and trusts you to think for yourself.
+          </p>
+          <p>
+            Analysis runs entirely on your device using a local AI model.
+            No page content is ever transmitted anywhere. The website you are reading
+            never knows it is being analyzed.
           </p>
           <div class="ext-features">
             <div class="ext-feature">
               <span class="ext-feature-icon">◈</span>
-              <span>Exposes non-chronological feed manipulation in real time</span>
+              <span>Local AI reads the full page and identifies manipulation techniques — outrage engineering, war framing, false authority, tribal activation, and more</span>
             </div>
             <div class="ext-feature">
               <span class="ext-feature-icon">◈</span>
-              <span>Shows ratio of chosen content vs. algorithmically inserted content</span>
+              <span>Quotes the exact language being used against you and explains the technique</span>
             </div>
             <div class="ext-feature">
               <span class="ext-feature-icon">◈</span>
-              <span>Identifies emotional escalation patterns as they occur</span>
+              <span>"Why is this here?" — shows you who owns the site, their documented business model, and cases of documented harm</span>
             </div>
             <div class="ext-feature">
               <span class="ext-feature-icon">◈</span>
-              <span>Tracks session duration and psychological content profile</span>
+              <span>Reads rendered screen text — not DOM structure that platforms can hide or obfuscate</span>
             </div>
             <div class="ext-feature">
               <span class="ext-feature-icon">◈</span>
-              <span>Works on Facebook, Instagram, X, TikTok, YouTube</span>
+              <span>Works on every website — news, social media, blogs, political content, advertising</span>
+            </div>
+            <div class="ext-feature">
+              <span class="ext-feature-icon">◈</span>
+              <span>Zero data retention. All processing local. No exceptions.</span>
             </div>
           </div>
           <div class="ext-badges">
-            <a href="https://github.com/HoffmanLensesInitiative/hoffman-lenses-extension" 
+            <a href="https://github.com/HoffmanLensesInitiative/hoffman-core"
                target="_blank" rel="noopener" class="ext-badge ext-badge-github">
               <span class="ext-badge-icon">⌥</span>
               Open Source on GitHub
             </a>
             <a href="#" class="ext-badge ext-badge-chrome ext-badge-soon">
               <span class="ext-badge-icon">◎</span>
-              Chrome — Coming Soon
+              Windows — Pre-release
             </a>
             <a href="#" class="ext-badge ext-badge-firefox ext-badge-soon">
               <span class="ext-badge-icon">◎</span>
-              Firefox — Coming Soon
+              Mac &amp; Linux — Coming
             </a>
           </div>
           <p class="ext-note">
-            The extension is open source and always will be. It cannot be bought. 
+            The Hoffman Browser is open source and always will be. It cannot be bought.
             It cannot be silenced. Once it is in the world, it belongs to the world.
           </p>
         </div>
@@ -256,7 +266,7 @@
               <div class="mockup-dots">
                 <span></span><span></span><span></span>
               </div>
-              <div class="mockup-url">facebook.com/feed</div>
+              <div class="mockup-url">foxnews.com</div>
             </div>
             <div class="mockup-feed">
               <div class="mockup-post">
@@ -268,9 +278,10 @@
                   </div>
                 </div>
                 <div class="mockup-post-body"></div>
-                <div class="mockup-annotation mockup-ann-1">
-                  <span class="ann-dot"></span>
-                  Post is 3 days old — surfaced now because you paused on similar content 4 min ago
+                <div class="mockup-annotation mockup-ann-2">
+                  <span class="ann-dot ann-dot-red"></span>
+                  <strong>war_framing</strong> &mdash; HIGH &mdash; "WAR WITH IRAN"<br>
+                  <small>Frames a diplomatic situation as armed conflict to maximize alarm and urgency.</small>
                 </div>
               </div>
               <div class="mockup-post mockup-post-inserted">
@@ -282,9 +293,10 @@
                   </div>
                 </div>
                 <div class="mockup-post-body mockup-post-body-dark"></div>
-                <div class="mockup-annotation mockup-ann-2">
-                  <span class="ann-dot ann-dot-red"></span>
-                  NOT from your network — algorithmically inserted. Emotional trigger detected: outrage
+                <div class="mockup-annotation mockup-ann-1">
+                  <span class="ann-dot ann-dot-amber"></span>
+                  <strong>outrage_engineering</strong> &mdash; HIGH<br>
+                  <small>Language calibrated for maximum emotional response rather than information.</small>
                 </div>
               </div>
               <div class="mockup-post">
@@ -297,25 +309,9 @@
                 </div>
                 <div class="mockup-post-body mockup-post-body-med"></div>
                 <div class="mockup-annotation mockup-ann-3">
-                  <span class="ann-dot ann-dot-amber"></span>
-                  You have been scrolling for 18 min. 11 of 14 posts were algorithmically selected.
-                </div>
-              </div>
-              <div class="mockup-session-bar">
-                <div class="mockup-session-label">Session profile</div>
-                <div class="mockup-bars">
-                  <div class="mockup-bar-item">
-                    <div class="mockup-bar-fill" style="width:71%;background:#8B1A1A"></div>
-                    <span>Outrage 71%</span>
-                  </div>
-                  <div class="mockup-bar-item">
-                    <div class="mockup-bar-fill" style="width:18%;background:#B8860B"></div>
-                    <span>Anxiety 18%</span>
-                  </div>
-                  <div class="mockup-bar-item">
-                    <div class="mockup-bar-fill" style="width:11%;background:#1A3A5C"></div>
-                    <span>Chosen content 11%</span>
-                  </div>
+                  <span class="ann-dot"></span>
+                  <strong>Why is this here?</strong><br>
+                  <small>Fox Corporation &middot; $14.7B revenue &middot; Advertising model &middot; 2 documented harm cases</small>
                 </div>
               </div>
             </div>
@@ -443,9 +439,9 @@
       <div class="act-grid">
         <div class="act-card act-card-primary">
           <div class="act-num">01</div>
-          <h3>Install Hoffman Lenses</h3>
-          <p>Put on the glasses. Use the extension for one week on your actual social media feeds. Then decide what you think.</p>
-          <a href="#extension" class="act-link">Get the extension →</a>
+          <h3>Get the Hoffman Browser</h3>
+          <p>Put on the glasses. Use the browser for one week on the sites you actually visit. Then decide what you think.</p>
+          <a href="#browser" class="act-link">Get the browser →</a>
         </div>
         <div class="act-card">
           <div class="act-num">02</div>
@@ -474,8 +470,8 @@
         <div class="act-card">
           <div class="act-num">06</div>
           <h3>For Developers</h3>
-          <p>The extension is open source. Fork it. Improve it. Translate it. Add platform support. This tool belongs to the world.</p>
-          <a href="https://github.com/HoffmanLensesInitiative/hoffman-lenses-extension" 
+          <p>The browser is open source. Fork it. Improve it. Add OCR support. Help us read the text that platforms hide in images. This tool belongs to the world.</p>
+          <a href="https://github.com/HoffmanLensesInitiative/hoffman-core"
              target="_blank" rel="noopener" class="act-link">Contribute on GitHub →</a>
         </div>
       </div>
@@ -511,11 +507,11 @@
             <em>The Algorithm and the Child</em>
           </span>
         </a>
-        <a href="https://github.com/HoffmanLensesInitiative/hoffman-lenses-extension" 
+        <a href="https://github.com/HoffmanLensesInitiative/hoffman-core"
            target="_blank" rel="noopener" class="about-link">
           <span class="about-link-icon">⌥</span>
           <span>
-            <strong>Extension Source</strong>
+            <strong>Browser Source</strong>
             <em>GitHub — Open Source</em>
           </span>
         </a>
@@ -553,7 +549,7 @@
       </div>
       <div class="footer-copy">
         <p>© 2026 The Hoffman Lenses Initiative.</p>
-        <p>White paper released under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons CC BY 4.0</a>. Extension under MIT License.</p>
+        <p>White paper released under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons CC BY 4.0</a>. Browser released under MIT License.</p>
         <p>This site contains no advertising, no tracking, no behavioral manipulation of any kind.</p>
       </div>
       <div class="footer-links">
