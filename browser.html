@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Hoffman Browser — a full desktop browser with a built-in local AI that reads every page for manipulation techniques. Free, open source, no data transmitted anywhere.">
+  <meta property="og:title" content="The Browser — Hoffman Lenses Initiative">
+  <meta property="og:description" content="Put on the glasses. A desktop browser that shows you exactly what the algorithm is doing to you. All processing local. Nothing leaves your device.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hoffmanlenses.org/browser.html">
+  <title>The Browser — Hoffman Lenses Initiative</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Hero ── */
+    .br-hero {
+      background: #080C10;
+      border-bottom: 1px solid rgba(26,58,92,0.4);
+      padding: 120px 24px 72px;
+      text-align: center;
+    }
+    .br-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #2A4A6A;
+      margin-bottom: 24px;
+    }
+    .br-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: #E8EEF4;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .br-hero-title em { color: #5A9ABE; font-style: italic; }
+    .br-hero-lede {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #6A8EAE;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+
+    /* Download badges in hero */
+    .br-hero-badges {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .br-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      border: 1px solid rgba(90,154,190,0.4);
+      color: #5A9ABE;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .br-badge:hover { border-color: rgba(90,154,190,0.8); background: rgba(90,154,190,0.08); color: #A8D4E6; }
+    .br-badge-primary {
+      background: rgba(90,154,190,0.12);
+      border-color: rgba(90,154,190,0.5);
+    }
+    .br-badge-soon { opacity: 0.5; cursor: default; }
+    .br-badge-soon:hover { background: none; color: #5A9ABE; border-color: rgba(90,154,190,0.4); }
+    .br-hero-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: #2A4A6A;
+      margin-top: 8px;
+    }
+
+    /* ── Layout ── */
+    .br-layout {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 72px 24px 80px;
+    }
+
+    /* ── Sections ── */
+    .br-section {
+      margin-bottom: 72px;
+    }
+    .br-section-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #2A4A6A;
+      margin-bottom: 12px;
+    }
+    .br-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      color: #E8EEF4;
+      line-height: 1.2;
+      margin: 0 0 24px;
+    }
+    .br-section p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: #8AAEC8;
+      margin: 0 0 1em;
+    }
+    .br-section p:last-child { margin-bottom: 0; }
+    .br-section p strong { color: #C8D8E8; font-weight: 600; }
+    .br-section p em { color: #A8C4D8; }
+    .br-section p a { color: #5A9ABE; text-decoration: underline; text-underline-offset: 3px; }
+    .br-section p a:hover { color: #A8D4E6; }
+
+    /* ── Feature list ── */
+    .br-features {
+      list-style: none;
+      margin: 28px 0;
+      padding: 0;
+    }
+    .br-feature {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(26,58,92,0.18);
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.975rem;
+      line-height: 1.7;
+      color: #8AAEC8;
+    }
+    .br-feature:last-child { border-bottom: none; }
+    .br-feature-icon {
+      color: #1A3A5C;
+      font-size: 1rem;
+      padding-top: 3px;
+      min-width: 18px;
+    }
+
+    /* ── Technique tags ── */
+    .br-techniques {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 24px 0;
+    }
+    .br-technique {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: #4A8ABE;
+      background: rgba(26,58,92,0.25);
+      border: 1px solid rgba(26,58,92,0.4);
+      padding: 5px 12px;
+      border-radius: 3px;
+    }
+
+    /* ── Pipeline steps ── */
+    .br-pipeline {
+      background: rgba(8,12,16,0.8);
+      border: 1px solid rgba(26,58,92,0.25);
+      border-radius: 6px;
+      padding: 28px 32px;
+      margin: 28px 0;
+    }
+    .br-pipeline-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #2A4A6A;
+      margin-bottom: 20px;
+    }
+    .br-pipeline-steps {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .br-pipeline-step {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      line-height: 1.7;
+      color: #4A7A9A;
+      border-bottom: 1px solid rgba(26,58,92,0.12);
+    }
+    .br-pipeline-step:last-child { border-bottom: none; }
+    .br-pipeline-step-arrow { color: #1A3A5C; min-width: 14px; }
+    .br-pipeline-step strong { color: #7AAEC8; }
+
+    /* ── Privacy block ── */
+    .br-privacy {
+      background: rgba(26,92,58,0.08);
+      border: 1px solid rgba(26,92,58,0.2);
+      border-left: 3px solid rgba(26,92,58,0.5);
+      border-radius: 0 6px 6px 0;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+    .br-privacy-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #2A6A4A;
+      margin-bottom: 10px;
+    }
+    .br-privacy p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: #5A8A6A;
+      margin: 0 0 0.6em;
+    }
+    .br-privacy p:last-child { margin-bottom: 0; }
+
+    /* ── FAQ ── */
+    .br-faq {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .br-faq-item {
+      border-top: 1px solid rgba(26,58,92,0.22);
+      padding: 28px 0;
+    }
+    .br-faq-item:first-child { border-top: none; padding-top: 0; }
+    .br-faq-q {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #C8D8E8;
+      margin-bottom: 12px;
+    }
+    .br-faq-a {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.975rem;
+      line-height: 1.8;
+      color: #6A8EAE;
+    }
+    .br-faq-a strong { color: #A8C4D8; }
+
+    /* ── Divider ── */
+    .br-divider {
+      border: none;
+      border-top: 1px solid rgba(26,58,92,0.25);
+      margin: 64px 0;
+    }
+
+    /* ── Open source block ── */
+    .br-open-source {
+      background: rgba(26,58,92,0.1);
+      border: 1px solid rgba(26,58,92,0.25);
+      border-radius: 6px;
+      padding: 40px;
+      text-align: center;
+    }
+    .br-open-source h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #E8EEF4;
+      margin: 0 0 12px;
+    }
+    .br-open-source p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: #6A8EAE;
+      max-width: 520px;
+      margin: 0 auto 24px;
+    }
+    .br-open-source-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .br-open-source-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #5A9ABE;
+      text-decoration: none;
+      border: 1px solid rgba(90,154,190,0.3);
+      padding: 10px 20px;
+      border-radius: 3px;
+      transition: all 0.2s;
+    }
+    .br-open-source-links a:hover {
+      border-color: rgba(90,154,190,0.7);
+      color: #A8D4E6;
+      background: rgba(90,154,190,0.08);
+    }
+
+    /* ── Mockup (reusing index.html classes) ── */
+    .br-mockup-wrap {
+      margin: 40px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <span class="nav-logo-hl">H</span>OFFMAN
+        <span class="nav-logo-sep">|</span>
+        <span class="nav-logo-hl">L</span>ENSES
+      </a>
+      <ul class="nav-links">
+        <li><a href="case.html">The Case</a></li>
+        <li><a href="browser.html" aria-current="page">The Browser</a></li>
+        <li><a href="remembrance.html">Remembrance</a></li>
+        <li><a href="act.html">Act</a></li>
+        <li><a href="families.html">Families</a></li>
+        <li><a href="whitepaper.html" class="nav-cta">White Paper</a></li>
+      </ul>
+      <button class="nav-hamburger" aria-label="Menu" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="br-hero">
+    <div class="br-eyebrow">Hoffman Lenses Initiative — The Browser</div>
+    <h1 class="br-hero-title">Put on <em>the glasses.</em></h1>
+    <p class="br-hero-lede">
+      A full desktop browser with a local AI that reads every page you visit for
+      manipulation techniques. Quotes the exact language being used against you.
+      Explains who runs the site, what their documented motive is, and what harm
+      they have caused. All processing happens on your device — nothing is ever transmitted anywhere.
+    </p>
+    <div class="br-hero-badges">
+      <a href="https://github.com/HoffmanLensesInitiative/hoffman-core/releases"
+         target="_blank" rel="noopener" class="br-badge br-badge-primary">
+        <span>◎</span> Windows — Pre-release
+      </a>
+      <a href="https://github.com/HoffmanLensesInitiative/hoffman-core"
+         target="_blank" rel="noopener" class="br-badge">
+        <span>⌥</span> Source on GitHub
+      </a>
+      <span class="br-badge br-badge-soon">◎ Mac &amp; Linux — Coming</span>
+    </div>
+    <div class="br-hero-note">Free. No account. No tracking. No exceptions.</div>
+  </header>
+
+  <main class="br-layout">
+
+    <!-- WHAT IT DOES -->
+    <section class="br-section">
+      <div class="br-section-eyebrow">What It Does</div>
+      <h2>Named for the glasses in <em>They Live.</em></h2>
+      <p>
+        In John Carpenter's 1988 film, a pair of sunglasses revealed the hidden messages
+        embedded in ordinary reality — commands embedded in advertisements, billboards,
+        dollar bills. Once you put them on, you could not unsee what was there.
+      </p>
+      <p>
+        The Hoffman Browser works the same way. It reads the page you are on the way
+        an expert reads manipulation — not word by word, but all at once, understanding
+        what the language is <strong>designed to do</strong> to you. When it finds a
+        manipulation technique, it shows you the exact words being used, names the technique,
+        and explains its purpose.
+      </p>
+      <p>
+        It does not tell you what to think. It does not block content. It does not decide
+        what you can read. It shows you what is being done to you, and trusts you to think
+        for yourself.
+      </p>
+
+      <ul class="br-features">
+        <li class="br-feature">
+          <span class="br-feature-icon">◈</span>
+          <span>Local AI reads the full rendered page text and identifies manipulation techniques — outrage engineering, war framing, false authority, tribal activation, and more</span>
+        </li>
+        <li class="br-feature">
+          <span class="br-feature-icon">◈</span>
+          <span>Quotes the exact language being used against you and explains the mechanism — why the technique works and what psychological response it is designed to produce</span>
+        </li>
+        <li class="br-feature">
+          <span class="br-feature-icon">◈</span>
+          <span>"Why is this here?" — shows who owns the site, their documented business model, revenue sources, and cases of documented harm linked to their platform</span>
+        </li>
+        <li class="br-feature">
+          <span class="br-feature-icon">◈</span>
+          <span>Reads rendered screen text — not DOM structure, which platforms can manipulate or obfuscate</span>
+        </li>
+        <li class="br-feature">
+          <span class="br-feature-icon">◈</span>
+          <span>Works on every website — news, social media, blogs, political content, advertising. Any page you can visit, the browser can analyze.</span>
+        </li>
+        <li class="br-feature">
+          <span class="br-feature-icon">◈</span>
+          <span>Zero data retention. All processing local. The website you are reading never knows it is being analyzed.</span>
+        </li>
+      </ul>
+    </section>
+
+    <hr class="br-divider">
+
+    <!-- TECHNIQUES -->
+    <section class="br-section">
+      <div class="br-section-eyebrow">Detection</div>
+      <h2>Nine documented manipulation techniques.</h2>
+      <p>
+        The local AI model is trained to identify nine categories of behavioral manipulation
+        technique commonly deployed in media content, news, political advertising, and
+        social platform feeds. Each detection returns the technique name, a severity rating,
+        the specific quoted text triggering the flag, and an explanation of why it qualifies.
+      </p>
+
+      <div class="br-techniques">
+        <span class="br-technique">outrage_engineering</span>
+        <span class="br-technique">war_framing</span>
+        <span class="br-technique">false_authority</span>
+        <span class="br-technique">tribal_activation</span>
+        <span class="br-technique">false_urgency</span>
+        <span class="br-technique">enemy_framing</span>
+        <span class="br-technique">incomplete_hook</span>
+        <span class="br-technique">dehumanization</span>
+        <span class="br-technique">complicity_framing</span>
+      </div>
+
+      <p>
+        <strong>outrage_engineering</strong> — Content calibrated for maximum emotional arousal
+        rather than information. Language chosen to provoke visceral anger, moral disgust, or
+        fear, because outrage is the emotion most reliably associated with share behavior
+        and continued engagement.
+      </p>
+      <p>
+        <strong>war_framing</strong> — Framing of political, social, or diplomatic situations
+        as armed conflict, invasion, or battle. Escalates perceived stakes and signals to
+        readers which "side" they should be on.
+      </p>
+      <p>
+        <strong>false_authority</strong> — Invocation of credentials, institutional affiliation,
+        or consensus ("experts agree," "studies show") without specific, verifiable sources.
+        Borrows epistemic legitimacy the content has not earned.
+      </p>
+      <p>
+        <strong>tribal_activation</strong> — Language that signals group identity and invites
+        readers to interpret content through the lens of in-group/out-group dynamics.
+        Reduces complex issues to team membership.
+      </p>
+      <p>
+        <strong>enemy_framing</strong> — Identifies a specific person, group, or institution
+        as an adversary whose actions are the cause of harm to the reader or their group.
+        Personalizes structural problems as individual villain narratives.
+      </p>
+    </section>
+
+    <hr class="br-divider">
+
+    <!-- HOW IT WORKS -->
+    <section class="br-section">
+      <div class="br-section-eyebrow">How It Works</div>
+      <h2>Local AI. No internet connection required for analysis.</h2>
+      <p>
+        When you click "Analyze" on any page, the analysis pipeline runs entirely on your
+        device. The AI model — a 2.2GB language model stored locally — never communicates
+        with external servers. The page you are reading never receives any signal that
+        analysis is happening.
+      </p>
+
+      <div class="br-pipeline">
+        <div class="br-pipeline-label">Analysis pipeline</div>
+        <ol class="br-pipeline-steps">
+          <li class="br-pipeline-step">
+            <span class="br-pipeline-step-arrow">→</span>
+            <span>You click <strong>Analyze</strong> on any page</span>
+          </li>
+          <li class="br-pipeline-step">
+            <span class="br-pipeline-step-arrow">→</span>
+            <span>Browser reads the rendered text of the page — what you can actually see, not the underlying code</span>
+          </li>
+          <li class="br-pipeline-step">
+            <span class="br-pipeline-step-arrow">→</span>
+            <span>Text is cleaned and trimmed to fit the local model's context window (~2400 characters)</span>
+          </li>
+          <li class="br-pipeline-step">
+            <span class="br-pipeline-step-arrow">→</span>
+            <span>Local AI (Llama 3.2 3B, running on your CPU) analyzes for manipulation techniques</span>
+          </li>
+          <li class="br-pipeline-step">
+            <span class="br-pipeline-step-arrow">→</span>
+            <span>Model returns structured JSON: technique, severity, quoted text, explanation</span>
+          </li>
+          <li class="br-pipeline-step">
+            <span class="br-pipeline-step-arrow">→</span>
+            <span>Results displayed in the analysis panel. Page never knew it was being analyzed.</span>
+          </li>
+        </ol>
+      </div>
+
+      <p>
+        The "Why is this here?" button on each flag queries the Behavioral Manipulation
+        Intelligence Database (BMID) — a locally-running database of documented platform
+        conduct, motives, and harm cases. If you run the BMID server alongside the browser,
+        every flag card shows you the documented ownership, business model, and harm record
+        of the site you are reading.
+      </p>
+    </section>
+
+    <hr class="br-divider">
+
+    <!-- PRIVACY -->
+    <section class="br-section">
+      <div class="br-section-eyebrow">Privacy</div>
+      <h2>Nothing leaves your device. Nothing.</h2>
+
+      <div class="br-privacy">
+        <div class="br-privacy-label">Privacy guarantee</div>
+        <p>No page content is transmitted to any server. Ever. Not to us. Not to anyone.</p>
+        <p>The AI model is downloaded once, stored on your device, and runs locally. It does not connect to the internet during analysis.</p>
+        <p>The browser uses an isolated session that does not share cookies or session data with your primary browser. Sites you visit in the Hoffman Browser cannot track you through your normal browser identity.</p>
+        <p>We collect no analytics, no usage data, no crash reports, no telemetry of any kind. We do not know who uses the browser or what pages they visit.</p>
+      </div>
+
+      <p>
+        We built it this way deliberately. A surveillance tool that surveils its users
+        would be no different from the systems it is designed to expose.
+      </p>
+    </section>
+
+    <hr class="br-divider">
+
+    <!-- FAQ -->
+    <section class="br-section">
+      <div class="br-section-eyebrow">Questions</div>
+      <h2>Common questions.</h2>
+
+      <ul class="br-faq">
+        <li class="br-faq-item">
+          <div class="br-faq-q">What hardware do I need?</div>
+          <div class="br-faq-a">
+            Any modern Windows PC with at least 4GB of RAM. The AI model requires approximately
+            2.2GB of storage. Analysis runs on the CPU — no GPU required. On a modern CPU,
+            analysis typically completes in 15–45 seconds depending on page length.
+          </div>
+        </li>
+        <li class="br-faq-item">
+          <div class="br-faq-q">What happens the first time I analyze a page?</div>
+          <div class="br-faq-a">
+            On first analysis, the browser downloads the AI model (~2.2GB) from HuggingFace.
+            This is a one-time download. After that, all analysis runs fully offline.
+            The model is stored in your user data directory and persists between sessions.
+          </div>
+        </li>
+        <li class="br-faq-item">
+          <div class="br-faq-q">Does the website I'm reading know I'm analyzing it?</div>
+          <div class="br-faq-a">
+            No. The browser reads the rendered text of the page the same way a screen reader
+            or print-to-PDF function would. No network request is made to the page's server
+            during analysis. The page receives no signal that analysis is occurring.
+          </div>
+        </li>
+        <li class="br-faq-item">
+          <div class="br-faq-q">How accurate is the detection?</div>
+          <div class="br-faq-a">
+            The model — Llama 3.2 3B Instruct, a 3 billion parameter language model — is
+            capable but not infallible. It will miss techniques and occasionally flag language
+            that is emphatic but not manipulative. The purpose is not to produce a verdict
+            but to make the techniques visible. You are the judge of what you see.
+          </div>
+        </li>
+        <li class="br-faq-item">
+          <div class="br-faq-q">Does it work on paywalled or logged-in content?</div>
+          <div class="br-faq-a">
+            Yes. The browser is a full Chromium browser. You can log into any site and
+            the analysis panel reads whatever text is rendered on screen — including content
+            behind a paywall or login, because you are already logged in.
+          </div>
+        </li>
+        <li class="br-faq-item">
+          <div class="br-faq-q">What is the BMID?</div>
+          <div class="br-faq-a">
+            The <strong>Behavioral Manipulation Intelligence Database</strong> is a locally-running
+            database of documented platform conduct — fishermen (platforms), their motives,
+            their documented harms, and the evidence supporting each claim. When the BMID server
+            is running alongside the browser, the "Why is this here?" button on any flag card
+            shows you the documented record for the site you are reading.
+            The BMID is open source and available at the same GitHub repository.
+          </div>
+        </li>
+        <li class="br-faq-item">
+          <div class="br-faq-q">Can I contribute to the project?</div>
+          <div class="br-faq-a">
+            Yes. The browser and BMID are fully open source under MIT and CC BY 4.0 licenses respectively.
+            The GitHub repository welcomes contributions — particularly OCR support for reading
+            text embedded in images, expanded platform data for the BMID, and ports for Mac and Linux.
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- OPEN SOURCE -->
+    <div class="br-open-source">
+      <h3>It cannot be bought. It will not be taken down.</h3>
+      <p>
+        The Hoffman Browser is open source and always will be. Once it is in the world,
+        it belongs to the world. Fork it. Improve it. Translate it. Build on it.
+      </p>
+      <div class="br-open-source-links">
+        <a href="https://github.com/HoffmanLensesInitiative/hoffman-core" target="_blank" rel="noopener">View Source on GitHub</a>
+        <a href="case.html">Read The Case</a>
+        <a href="act.html">Take Action</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <span class="footer-logo-hl">HOFFMAN LENSES</span>
+        <span class="footer-tagline">Making the invisible visible.</span>
+      </div>
+      <div class="footer-copy">
+        <p>© 2026 The Hoffman Lenses Initiative.</p>
+        <p>White paper released under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons CC BY 4.0</a>. Browser released under MIT License.</p>
+        <p>This site contains no advertising, no tracking, no behavioral manipulation of any kind.</p>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:contact@hoffmanlenses.org">Contact</a>
+        <a href="mailto:press@hoffmanlenses.org">Press</a>
+        <a href="mailto:families@hoffmanlenses.org">Families</a>
+        <a href="https://github.com/HoffmanLensesInitiative" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="footer-dedication">
+      They deserved better than to be engagement metrics.
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

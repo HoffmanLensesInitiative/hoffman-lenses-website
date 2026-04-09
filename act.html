@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="What you can do today — get the browser, read the white paper, share the case, contact your representatives, support bereaved families.">
+  <meta property="og:title" content="Act — Hoffman Lenses Initiative">
+  <meta property="og:description" content="The tools exist. The evidence exists. The case is made. Here is what you can do with it.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hoffmanlenses.org/act.html">
+  <title>Act — Hoffman Lenses Initiative</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Hero ── */
+    .act-hero {
+      background: #080C10;
+      border-bottom: 1px solid rgba(26,58,92,0.4);
+      padding: 120px 24px 72px;
+      text-align: center;
+    }
+    .act-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #2A4A6A;
+      margin-bottom: 24px;
+    }
+    .act-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 900;
+      color: #E8EEF4;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    .act-hero-lede {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #6A8EAE;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── Layout ── */
+    .act-layout {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 72px 24px 80px;
+    }
+
+    /* ── Action items ── */
+    .act-item {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 32px;
+      align-items: start;
+      padding: 52px 0;
+      border-top: 1px solid rgba(26,58,92,0.25);
+    }
+    .act-item:first-child { border-top: none; padding-top: 0; }
+
+    .act-item-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-style: italic;
+      color: #1A3A5C;
+      line-height: 1;
+      padding-top: 4px;
+    }
+    .act-item-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 700;
+      color: #E8EEF4;
+      margin: 0 0 16px;
+      line-height: 1.2;
+    }
+    .act-item-body p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1rem;
+      line-height: 1.82;
+      color: #7A9EBA;
+      margin: 0 0 1em;
+    }
+    .act-item-body p:last-of-type { margin-bottom: 0; }
+    .act-item-body p strong { color: #C8D8E8; font-weight: 600; }
+    .act-item-body p em { color: #A8C4D8; }
+
+    /* Action links */
+    .act-item-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .act-item-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #5A9ABE;
+      text-decoration: none;
+      border: 1px solid rgba(90,154,190,0.3);
+      padding: 9px 18px;
+      border-radius: 3px;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .act-item-link:hover {
+      border-color: rgba(90,154,190,0.7);
+      color: #A8D4E6;
+      background: rgba(90,154,190,0.08);
+    }
+    .act-item-link-primary {
+      background: rgba(90,154,190,0.12);
+      border-color: rgba(90,154,190,0.4);
+    }
+
+    /* Sub-list */
+    .act-item-steps {
+      list-style: none;
+      margin: 16px 0 0;
+      padding: 0;
+    }
+    .act-item-steps li {
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #7A9EBA;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(26,58,92,0.12);
+    }
+    .act-item-steps li:last-child { border-bottom: none; }
+    .act-item-steps li::before {
+      content: '—';
+      color: #1A3A5C;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      padding-top: 3px;
+      min-width: 14px;
+    }
+
+    /* Template callout */
+    .act-template {
+      background: rgba(8,12,16,0.7);
+      border: 1px solid rgba(26,58,92,0.25);
+      border-radius: 6px;
+      padding: 24px 28px;
+      margin: 20px 0 0;
+    }
+    .act-template-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #2A4A6A;
+      margin-bottom: 10px;
+    }
+    .act-template p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: #5A7A9A;
+      font-style: italic;
+      margin: 0 0 6px;
+    }
+    .act-template p:last-child { margin-bottom: 0; }
+
+    @media (max-width: 560px) {
+      .act-item { grid-template-columns: 1fr; gap: 12px; }
+      .act-item-num { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <span class="nav-logo-hl">H</span>OFFMAN
+        <span class="nav-logo-sep">|</span>
+        <span class="nav-logo-hl">L</span>ENSES
+      </a>
+      <ul class="nav-links">
+        <li><a href="case.html">The Case</a></li>
+        <li><a href="browser.html">The Browser</a></li>
+        <li><a href="remembrance.html">Remembrance</a></li>
+        <li><a href="act.html" aria-current="page">Act</a></li>
+        <li><a href="families.html">Families</a></li>
+        <li><a href="whitepaper.html" class="nav-cta">White Paper</a></li>
+      </ul>
+      <button class="nav-hamburger" aria-label="Menu" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="act-hero">
+    <div class="act-eyebrow">Hoffman Lenses Initiative — Take Action</div>
+    <h1 class="act-hero-title">What you can do today.</h1>
+    <p class="act-hero-lede">
+      The tools exist. The evidence exists. The case is made and documented and freely available.
+      What it needs now is people who use the tools, share the case, and make enough noise
+      that ignoring it is no longer an option.
+    </p>
+  </header>
+
+  <main class="act-layout">
+
+    <!-- 01: GET THE BROWSER -->
+    <div class="act-item">
+      <div class="act-item-num">01</div>
+      <div class="act-item-body">
+        <h2>Get the Hoffman Browser.</h2>
+        <p>
+          Use the browser for one week on the sites you actually visit — news sites,
+          social media, political content, advertising. See what it finds. Then decide
+          what you think.
+        </p>
+        <p>
+          The analysis runs locally on your device. No content is transmitted anywhere.
+          The website you are reading never knows it is being analyzed. Once you see
+          what the machine is doing, you cannot unsee it.
+        </p>
+        <div class="act-item-links">
+          <a href="browser.html" class="act-item-link act-item-link-primary">Get the browser →</a>
+          <a href="https://github.com/HoffmanLensesInitiative/hoffman-core" target="_blank" rel="noopener" class="act-item-link">Source on GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02: READ THE WHITE PAPER -->
+    <div class="act-item">
+      <div class="act-item-num">02</div>
+      <div class="act-item-body">
+        <h2>Read the white paper.</h2>
+        <p>
+          <em>The Algorithm and the Child</em> is the full human rights case — legally precise,
+          fully cited, built on primary sources. It establishes that Behavioral Manipulation
+          Systems violate the right to life, the right to health, the right to privacy, and the
+          best interests of the child under international human rights instruments.
+        </p>
+        <p>
+          It documents, platform by platform, what was known and when. It names the people
+          who knew. It proposes specific remedies. It is not a petition. It is a case.
+        </p>
+        <p>
+          Released under Creative Commons CC BY 4.0. <strong>Reproduce it freely.
+          Translate it. Publish it. It belongs to anyone who needs it.</strong>
+        </p>
+        <div class="act-item-links">
+          <a href="whitepaper.html" class="act-item-link act-item-link-primary">Read &amp; download →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03: SHARE THE CASE -->
+    <div class="act-item">
+      <div class="act-item-num">03</div>
+      <div class="act-item-body">
+        <h2>Share the case with people who can act on it.</h2>
+        <p>
+          The white paper is built to be shared. Send it to your elected representatives.
+          Send it to journalists. Send it to lawyers who work in platform accountability.
+          Send it to academics. Send it to other parents.
+        </p>
+        <p>
+          Specifically, consider:
+        </p>
+        <ul class="act-item-steps">
+          <li>Your member of Congress or Parliament — especially those on committees with oversight of technology, children, or health</li>
+          <li>Your state attorney general — 42 state AGs have already filed suit against Meta; others are considering action</li>
+          <li>Local journalists covering technology, child welfare, or public health</li>
+          <li>School boards and parent-teacher organizations</li>
+          <li>Child psychologists, pediatricians, and mental health professionals who work with young people</li>
+        </ul>
+
+        <div class="act-template">
+          <div class="act-template-label">Suggested message to elected officials</div>
+          <p>
+            "Enclosed is a human rights case documenting that social media platforms
+            knowingly designed systems that have contributed to the deaths of children,
+            including [name a local case if one exists]. I am asking you to review this
+            documentation and take action on platform accountability legislation."
+          </p>
+        </div>
+
+        <div class="act-item-links">
+          <a href="whitepaper.html" class="act-item-link act-item-link-primary">Download the white paper →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04: SWITCH TO CHRONOLOGICAL -->
+    <div class="act-item">
+      <div class="act-item-num">04</div>
+      <div class="act-item-body">
+        <h2>Switch to chronological feeds.</h2>
+        <p>
+          Every major platform hides the chronological feed option deep in settings
+          because they do not want you to use it. The algorithmic feed exists to maximize
+          your time on platform. The chronological feed exists to show you what the
+          people you chose to follow actually posted, in the order they posted it.
+        </p>
+        <p>
+          Switching to chronological removes the algorithm's ability to choose what
+          you see next. You remain in control of who you follow. The algorithm loses
+          control of your attention.
+        </p>
+        <p>
+          Step-by-step instructions for Instagram, TikTok, Facebook, Twitter/X,
+          YouTube, and Reddit:
+        </p>
+        <div class="act-item-links">
+          <a href="howto.html" class="act-item-link act-item-link-primary">How to do it →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05: FOR FAMILIES -->
+    <div class="act-item">
+      <div class="act-item-num">05</div>
+      <div class="act-item-body">
+        <h2>For families who have lost a child.</h2>
+        <p>
+          If you have lost a child to algorithmic violence — or are supporting a family
+          that has — the Families page has resources, legal contacts, documentation
+          guidance, and a direct line to this initiative.
+        </p>
+        <p>
+          If you want your child's name on the remembrance list, contact us.
+          If you are willing to speak publicly, organizations exist to support you
+          and amplify your voice. If you are not ready to speak, that is also right.
+          We want to hear from you either way.
+        </p>
+        <div class="act-item-links">
+          <a href="families.html" class="act-item-link act-item-link-primary">Resources for families →</a>
+          <a href="remembrance.html" class="act-item-link">Remembrance →</a>
+          <a href="mailto:families@hoffmanlenses.org" class="act-item-link">Contact us →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06: FOR DEVELOPERS -->
+    <div class="act-item">
+      <div class="act-item-num">06</div>
+      <div class="act-item-body">
+        <h2>For developers.</h2>
+        <p>
+          The browser is open source under the MIT License. The BMID is open source
+          under CC BY 4.0. Both need work.
+        </p>
+        <p>
+          Specifically, the things that would most advance the project:
+        </p>
+        <ul class="act-item-steps">
+          <li><strong>OCR support</strong> — platforms increasingly embed text in images to evade text-based detection. Reading image text would close that gap.</li>
+          <li><strong>Mac and Linux ports</strong> — the browser currently runs on Windows only. Electron supports all platforms; the gap is testing and packaging.</li>
+          <li><strong>BMID platform data</strong> — adding documented records for more platforms, amplifiers, and actors strengthens the "Why is this here?" feature for every user.</li>
+          <li><strong>Technique expansion</strong> — the detection prompt currently covers 9 techniques. Documented manipulation patterns that should be added are welcome as issues or PRs.</li>
+          <li><strong>Browser extension port</strong> — a companion extension for users who prefer their existing browser is in scope but not yet built.</li>
+        </ul>
+        <div class="act-item-links">
+          <a href="https://github.com/HoffmanLensesInitiative/hoffman-core" target="_blank" rel="noopener" class="act-item-link act-item-link-primary">Contribute on GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <span class="footer-logo-hl">HOFFMAN LENSES</span>
+        <span class="footer-tagline">Making the invisible visible.</span>
+      </div>
+      <div class="footer-copy">
+        <p>© 2026 The Hoffman Lenses Initiative.</p>
+        <p>White paper released under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons CC BY 4.0</a>. Browser released under MIT License.</p>
+        <p>This site contains no advertising, no tracking, no behavioral manipulation of any kind.</p>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:contact@hoffmanlenses.org">Contact</a>
+        <a href="mailto:press@hoffmanlenses.org">Press</a>
+        <a href="mailto:families@hoffmanlenses.org">Families</a>
+        <a href="https://github.com/HoffmanLensesInitiative" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="footer-dedication">
+      They deserved better than to be engagement metrics.
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

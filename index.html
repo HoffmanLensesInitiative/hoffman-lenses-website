@@ -13,6 +13,146 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Section summary cards ── */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 56px;
+    }
+    @media (max-width: 640px) { .summary-grid { grid-template-columns: 1fr; } }
+
+    .summary-card {
+      background: rgba(8,12,16,0.7);
+      border: 1px solid rgba(26,58,92,0.28);
+      border-radius: 6px;
+      padding: 32px;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+    .summary-card:hover {
+      border-color: rgba(90,154,190,0.4);
+      background: rgba(8,12,16,0.9);
+    }
+    .summary-card-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #2A4A6A;
+      margin-bottom: 10px;
+    }
+    .summary-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #C8D8E8;
+      margin: 0 0 12px;
+      line-height: 1.2;
+    }
+    .summary-card p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: #4A6A8A;
+      margin: 0 0 20px;
+    }
+    .summary-card-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: #3A6A8A;
+      transition: color 0.2s;
+    }
+    .summary-card:hover .summary-card-link { color: #5A9ABE; }
+
+    /* Primary card variant */
+    .summary-card-primary {
+      border-color: rgba(26,58,92,0.5);
+      background: rgba(26,58,92,0.08);
+    }
+    .summary-card-primary h3 { color: #E8EEF4; }
+    .summary-card-primary p { color: #5A7A9A; }
+    .summary-card-primary .summary-card-link { color: #5A9ABE; }
+
+    /* About section */
+    .about-band {
+      background: rgba(8,12,16,0.5);
+      border-top: 1px solid rgba(26,58,92,0.2);
+      padding: 64px 24px;
+      margin-top: 0;
+    }
+    .about-band-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (max-width: 640px) { .about-band-inner { grid-template-columns: 1fr; gap: 32px; } }
+
+    .about-band .section-label { margin-bottom: 12px; }
+    .about-band h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #E8EEF4;
+      margin: 0 0 20px;
+      line-height: 1.25;
+    }
+    .about-band p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #5A7A9A;
+      margin: 0 0 0.9em;
+    }
+    .about-band p:last-child { margin-bottom: 0; }
+    .about-band p em { color: #7A9ABE; }
+
+    .about-links {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .about-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(26,58,92,0.18);
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+    .about-link:last-child { border-bottom: none; }
+    .about-link:hover { border-color: rgba(26,58,92,0.4); }
+    .about-link-icon {
+      font-size: 1.1rem;
+      color: #1A3A5C;
+      min-width: 22px;
+      text-align: center;
+    }
+    .about-link strong {
+      display: block;
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #8AAEC8;
+    }
+    .about-link em {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #2A4A6A;
+      font-style: normal;
+      margin-top: 2px;
+    }
+    .about-link:hover strong { color: #A8C4D8; }
+  </style>
 </head>
 <body>
 
@@ -25,10 +165,11 @@
         <span class="nav-logo-hl">L</span>ENSES
       </a>
       <ul class="nav-links">
-        <li><a href="#case">The Case</a></li>
-        <li><a href="#browser">The Browser</a></li>
+        <li><a href="case.html">The Case</a></li>
+        <li><a href="browser.html">The Browser</a></li>
         <li><a href="remembrance.html">Remembrance</a></li>
-        <li><a href="#act">Act</a></li>
+        <li><a href="act.html">Act</a></li>
+        <li><a href="families.html">Families</a></li>
         <li><a href="whitepaper.html" class="nav-cta">White Paper</a></li>
       </ul>
       <button class="nav-hamburger" aria-label="Menu" id="hamburger">
@@ -59,7 +200,7 @@
         An open-source tool that shows you exactly what the algorithm is doing to you.
       </p>
       <div class="hero-actions">
-        <a href="#browser" class="btn btn-primary">
+        <a href="browser.html" class="btn btn-primary">
           <span class="btn-icon">◎</span>
           Get the Browser
         </a>
@@ -107,396 +248,108 @@
         <span class="dn-sep">·</span>
         <span>Sadie Riggs, 15</span>
         <span class="dn-sep">·</span>
-        <a href="#remembrance" class="dn-more">and hundreds more →</a>
+        <a href="remembrance.html" class="dn-more">and hundreds more →</a>
       </div>
     </div>
   </section>
 
-  <!-- THE CASE -->
-  <section class="section case-section" id="case">
+  <!-- SECTION SUMMARIES -->
+  <section class="section" style="padding-top: 72px; padding-bottom: 80px;">
     <div class="container">
-      <div class="section-label">The Case</div>
-      <h2 class="section-title">This is not about social media.<br>It is about the machine inside it.</h2>
-      <div class="case-grid">
-        <div class="case-main">
-          <p class="case-lead">
-            On February 3, 2026, nine-year-old JackLynn Blackwell went out to play in her backyard
-            in Stephenville, Texas. Her father found her minutes later with a cord around her neck.
-            Her family says she had been served a choking challenge video by an algorithm — a claim
-            TikTok and Snap settled rather than contest in open court.
-          </p>
+      <div class="section-label">The Initiative</div>
+      <h2 class="section-title">What is here. Where to go.</h2>
+
+      <div class="summary-grid">
+
+        <a href="case.html" class="summary-card summary-card-primary">
+          <div class="summary-card-eyebrow">The Case</div>
+          <h3>The human rights argument. Platform by platform.</h3>
           <p>
-            She is not an anomaly. She is a data point in a pattern that has been documented, 
-            studied, reported — and ignored — for over a decade. Behavioral Manipulation Systems 
-            (BMS) — the algorithmic engines that decide what you see next on every major social 
-            platform — are injuring and killing human beings as a direct and foreseeable consequence 
-            of how they are designed to operate.
+            The documented record of what platforms knew, when they knew it, and what they
+            chose to do about it. The legal framework. The children who died while the
+            companies chose profit. The argument for why this must end.
           </p>
+          <span class="summary-card-link">Read the case →</span>
+        </a>
+
+        <a href="browser.html" class="summary-card summary-card-primary">
+          <div class="summary-card-eyebrow">The Browser</div>
+          <h3>An open-source tool that makes manipulation visible.</h3>
           <p>
-            These systems do not recommend content. They manipulate behavior. The distinction is not 
-            semantic. A recommendation serves <em>your</em> interest. A manipulation serves the 
-            platform's interest at your expense. They monitor your psychological responses in real 
-            time, identify your vulnerabilities, and serve you increasingly intense content to keep 
-            you on the platform — because your distress, your outrage, your grief are 
-            <strong>the product being sold to advertisers.</strong>
+            A full desktop browser with a local AI that reads every page you visit for
+            manipulation techniques. Quotes the exact language. Explains the mechanism.
+            Shows you who owns the site and what harm they have caused.
+            All processing on your device. Free. Forever.
           </p>
-          <a href="whitepaper.html" class="case-readmore">
-            Read the full human rights case →
-          </a>
-        </div>
-        <div class="case-pillars">
-          <div class="pillar">
-            <div class="pillar-num">I</div>
-            <div class="pillar-body">
-              <div class="pillar-title">Right to Life</div>
-              <div class="pillar-text">ICCPR Article 6 · UNCRC Article 6</div>
-            </div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-num">II</div>
-            <div class="pillar-body">
-              <div class="pillar-title">Right to Health</div>
-              <div class="pillar-text">ICESCR Article 12 · UNCRC Article 24</div>
-            </div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-num">III</div>
-            <div class="pillar-body">
-              <div class="pillar-title">Right to Privacy</div>
-              <div class="pillar-text">ICCPR Article 17 · UNCRC Article 16</div>
-            </div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-num">IV</div>
-            <div class="pillar-body">
-              <div class="pillar-title">Best Interests of the Child</div>
-              <div class="pillar-text">UNCRC Article 3</div>
-            </div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-num">V</div>
-            <div class="pillar-body">
-              <div class="pillar-title">Corporate Duty of Care</div>
-              <div class="pillar-text">UN Guiding Principles on Business & Human Rights</div>
-            </div>
-          </div>
-        </div>
-      </div>
+          <span class="summary-card-link">Get the browser →</span>
+        </a>
 
-      <blockquote class="case-quote">
-        <p>"You could check on your kid, it could be kid-friendly videos, and then three minutes 
-        later it could be totally something dark because of the algorithms they start creating. 
-        There's too many of these kids lost for these companies not to be held accountable."</p>
-        <cite>— Curtis Blackwell, father of JackLynn Blackwell, age 9. February 2026.</cite>
-      </blockquote>
-    </div>
-  </section>
-
-  <!-- THE BROWSER -->
-  <section class="section extension-section" id="browser">
-    <div class="container">
-      <div class="section-label">The Browser</div>
-      <h2 class="section-title">Put on the glasses.</h2>
-      <div class="ext-grid">
-        <div class="ext-description">
-          <p class="ext-lead">
-            The Hoffman Browser is a full desktop browser that reads every page you visit
-            the way an expert reads manipulation — not word by word, but all at once,
-            understanding what the language is <em>designed to do</em> to you.
-          </p>
+        <a href="remembrance.html" class="summary-card">
+          <div class="summary-card-eyebrow">Remembrance</div>
+          <h3>Their names. Their lives. Not statistics.</h3>
           <p>
-            Named for the glasses in John Carpenter's <em>They Live</em> — once you see
-            the hidden messages, you cannot unsee them. The browser works the same way.
-            It does not tell you what to think. It shows you what is being done to you,
-            and trusts you to think for yourself.
+            A permanent public record of children killed by algorithmic violence —
+            maintained with the consent and participation of their families.
+            We say their names. We do not look away.
           </p>
+          <span class="summary-card-link">Read →</span>
+        </a>
+
+        <a href="act.html" class="summary-card">
+          <div class="summary-card-eyebrow">Act</div>
+          <h3>Six things you can do today.</h3>
           <p>
-            Analysis runs entirely on your device using a local AI model.
-            No page content is ever transmitted anywhere. The website you are reading
-            never knows it is being analyzed.
+            Get the browser. Read and share the white paper. Contact your representatives.
+            Switch to chronological feeds. Support bereaved families. Contribute to the
+            open-source project. The tools are here. The case is made.
           </p>
-          <div class="ext-features">
-            <div class="ext-feature">
-              <span class="ext-feature-icon">◈</span>
-              <span>Local AI reads the full page and identifies manipulation techniques — outrage engineering, war framing, false authority, tribal activation, and more</span>
-            </div>
-            <div class="ext-feature">
-              <span class="ext-feature-icon">◈</span>
-              <span>Quotes the exact language being used against you and explains the technique</span>
-            </div>
-            <div class="ext-feature">
-              <span class="ext-feature-icon">◈</span>
-              <span>"Why is this here?" — shows you who owns the site, their documented business model, and cases of documented harm</span>
-            </div>
-            <div class="ext-feature">
-              <span class="ext-feature-icon">◈</span>
-              <span>Reads rendered screen text — not DOM structure that platforms can hide or obfuscate</span>
-            </div>
-            <div class="ext-feature">
-              <span class="ext-feature-icon">◈</span>
-              <span>Works on every website — news, social media, blogs, political content, advertising</span>
-            </div>
-            <div class="ext-feature">
-              <span class="ext-feature-icon">◈</span>
-              <span>Zero data retention. All processing local. No exceptions.</span>
-            </div>
-          </div>
-          <div class="ext-badges">
-            <a href="https://github.com/HoffmanLensesInitiative/hoffman-core"
-               target="_blank" rel="noopener" class="ext-badge ext-badge-github">
-              <span class="ext-badge-icon">⌥</span>
-              Open Source on GitHub
-            </a>
-            <a href="#" class="ext-badge ext-badge-chrome ext-badge-soon">
-              <span class="ext-badge-icon">◎</span>
-              Windows — Pre-release
-            </a>
-            <a href="#" class="ext-badge ext-badge-firefox ext-badge-soon">
-              <span class="ext-badge-icon">◎</span>
-              Mac &amp; Linux — Coming
-            </a>
-          </div>
-          <p class="ext-note">
-            The Hoffman Browser is open source and always will be. It cannot be bought.
-            It will not be taken down. Once it is in the world, it belongs to the world.
+          <span class="summary-card-link">Take action →</span>
+        </a>
+
+        <a href="families.html" class="summary-card">
+          <div class="summary-card-eyebrow">For Families</div>
+          <h3>Resources for those who have lost a child.</h3>
+          <p>
+            Legal resources, documentation guidance, advocacy organizations, and a direct
+            line to this initiative. If you have lost a child to algorithmic violence,
+            you are not alone. What happened is not a tragedy without cause.
           </p>
-        </div>
-        <div class="ext-mockup">
-          <div class="mockup-browser">
-            <div class="mockup-bar">
-              <div class="mockup-dots">
-                <span></span><span></span><span></span>
-              </div>
-              <div class="mockup-url">foxnews.com</div>
-            </div>
-            <div class="mockup-feed">
-              <div class="mockup-post">
-                <div class="mockup-post-header">
-                  <div class="mockup-avatar"></div>
-                  <div class="mockup-meta">
-                    <div class="mockup-name"></div>
-                    <div class="mockup-time"></div>
-                  </div>
-                </div>
-                <div class="mockup-post-body"></div>
-                <div class="mockup-annotation mockup-ann-2">
-                  <span class="ann-dot ann-dot-red"></span>
-                  <strong>war_framing</strong> &mdash; HIGH &mdash; "WAR WITH IRAN"<br>
-                  <small>Frames a diplomatic situation as armed conflict to maximize alarm and urgency.</small>
-                </div>
-              </div>
-              <div class="mockup-post mockup-post-inserted">
-                <div class="mockup-post-header">
-                  <div class="mockup-avatar mockup-avatar-grey"></div>
-                  <div class="mockup-meta">
-                    <div class="mockup-name"></div>
-                    <div class="mockup-time"></div>
-                  </div>
-                </div>
-                <div class="mockup-post-body mockup-post-body-dark"></div>
-                <div class="mockup-annotation mockup-ann-1">
-                  <span class="ann-dot ann-dot-amber"></span>
-                  <strong>outrage_engineering</strong> &mdash; HIGH<br>
-                  <small>Language calibrated for maximum emotional response rather than information.</small>
-                </div>
-              </div>
-              <div class="mockup-post">
-                <div class="mockup-post-header">
-                  <div class="mockup-avatar mockup-avatar-sm"></div>
-                  <div class="mockup-meta">
-                    <div class="mockup-name mockup-name-sm"></div>
-                    <div class="mockup-time"></div>
-                  </div>
-                </div>
-                <div class="mockup-post-body mockup-post-body-med"></div>
-                <div class="mockup-annotation mockup-ann-3">
-                  <span class="ann-dot"></span>
-                  <strong>Why is this here?</strong><br>
-                  <small>Fox Corporation &middot; $14.7B revenue &middot; Advertising model &middot; 2 documented harm cases</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+          <span class="summary-card-link">Resources for families →</span>
+        </a>
 
-  <!-- WHAT THEY KNEW -->
-  <section class="section knew-section">
-    <div class="container">
-      <div class="section-label">The Record</div>
-      <h2 class="section-title">The documented record of knowledge and inaction.</h2>
-      <div class="knew-grid">
-        <div class="knew-item">
-          <div class="knew-year">2017</div>
-          <div class="knew-body">
-            <strong>Molly Russell dies.</strong> Meta's algorithm served the 14-year-old 
-            escalating self-harm content she never requested. A London coroner formally 
-            ruled it contributed to her death — the first time a coroner formally ruled that
-            social media content contributed to a child's death.
-          </div>
-        </div>
-        <div class="knew-item">
-          <div class="knew-year">2021</div>
-          <div class="knew-body">
-            <strong>The Facebook Papers.</strong> Whistleblower Frances Haugen reveals Meta's 
-            internal research: "We make body image issues worse for one in three teen girls." 
-            Recommendations to change the algorithm were overruled because they would reduce 
-            engagement metrics.
-          </div>
-        </div>
-        <div class="knew-item">
-          <div class="knew-year">2021</div>
-          <div class="knew-body">
-            <strong>Nylah Anderson, age 10, dies.</strong> Her family alleged TikTok's For You
-            page served her the Blackout Challenge. A federal appeals court ruled in 2024 that
-            the algorithm itself — not just the content — may be subject to liability.
-          </div>
-        </div>
-        <div class="knew-item">
-          <div class="knew-year">2024</div>
-          <div class="knew-body">
-            <strong>Senate testimony.</strong> Platform CEOs appear before the Senate Judiciary 
-            Committee. Zuckerberg says he is "sorry for everything you have all been through." 
-            He does not apologize for the algorithm. Nothing changes.
-          </div>
-        </div>
-        <div class="knew-item">
-          <div class="knew-year">2025</div>
-          <div class="knew-body">
-            <strong>97% still harmful.</strong> Eight years after Molly Russell's death, the 
-            Molly Rose Foundation finds that 97% of content served to teen accounts engaging 
-            with depression material on Instagram remains harmful. The algorithm is unchanged.
-          </div>
-        </div>
-        <div class="knew-item">
-          <div class="knew-year">2026</div>
-          <div class="knew-body">
-            <strong>JackLynn Blackwell, age 9, dies.</strong> Stephenville, Texas. Found by 
-            her father. She loved karaoke. She wanted to be a star. TikTok and Snap settle 
-            a major California lawsuit days later — rather than explain their algorithms 
-            under oath in open court.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <a href="whitepaper.html" class="summary-card">
+          <div class="summary-card-eyebrow">White Paper</div>
+          <h3>The Algorithm and the Child.</h3>
+          <p>
+            The full legal case. Fully cited. Released under Creative Commons —
+            reproduce it, translate it, share it freely. This document belongs
+            to anyone who needs it.
+          </p>
+          <span class="summary-card-link">Read &amp; download →</span>
+        </a>
 
-  <!-- REMEMBRANCE -->
-  <section class="section remembrance-section" id="remembrance">
-    <div class="container">
-      <div class="section-label">Remembrance</div>
-      <h2 class="section-title">They deserved better than to be<br>engagement metrics.</h2>
-      <p class="remembrance-intro">
-        This is a permanent, publicly accessible record of children killed by algorithmic 
-        violence — maintained with the consent and participation of their families. 
-        We are building this list. If you have lost a child and want their name here, 
-        <a href="mailto:families@hoffmanlenses.org">contact us</a>.
-      </p>
-      <div class="remembrance-names">
-        <div class="rname">
-          <span class="rname-name">JackLynn Blackwell</span>
-          <span class="rname-age">age 9</span>
-          <span class="rname-place">Stephenville, Texas · 2026</span>
-        </div>
-        <div class="rname">
-          <span class="rname-name">Molly Russell</span>
-          <span class="rname-age">age 14</span>
-          <span class="rname-place">London, United Kingdom · 2017</span>
-        </div>
-        <div class="rname">
-          <span class="rname-name">Nylah Anderson</span>
-          <span class="rname-age">age 10</span>
-          <span class="rname-place">Philadelphia, Pennsylvania · 2021</span>
-        </div>
-        <div class="rname">
-          <span class="rname-name">CJ Dawley</span>
-          <span class="rname-age">age 14</span>
-          <span class="rname-place">Kenosha, Wisconsin</span>
-        </div>
-        <div class="rname">
-          <span class="rname-name">Amanda Todd</span>
-          <span class="rname-age">age 15</span>
-          <span class="rname-place">British Columbia, Canada · 2012</span>
-        </div>
-        <div class="rname">
-          <span class="rname-name">Sadie Riggs</span>
-          <span class="rname-age">age 15</span>
-          <span class="rname-place">Pennsylvania · 2015</span>
-        </div>
-      </div>
-      <p class="remembrance-growing">
-        This list is growing. <a href="mailto:families@hoffmanlenses.org">Help us make it complete.</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- ACT -->
-  <section class="section act-section" id="act">
-    <div class="container">
-      <div class="section-label">Take Action</div>
-      <h2 class="section-title">What you can do today.</h2>
-      <div class="act-grid">
-        <div class="act-card act-card-primary">
-          <div class="act-num">01</div>
-          <h3>Get the Hoffman Browser</h3>
-          <p>Put on the glasses. Use the browser for one week on the sites you actually visit. Then decide what you think.</p>
-          <a href="#browser" class="act-link">Get the browser →</a>
-        </div>
-        <div class="act-card">
-          <div class="act-num">02</div>
-          <h3>Read the White Paper</h3>
-          <p>The full human rights case. Legally precise. Fully cited. Released under Creative Commons — reproduce it freely.</p>
-          <a href="whitepaper.html" class="act-link">Read &amp; download →</a>
-        </div>
-        <div class="act-card">
-          <div class="act-num">03</div>
-          <h3>Share the Case</h3>
-          <p>Send the white paper to your elected representatives. Send it to journalists. Send it to other parents. This document belongs to everyone.</p>
-          <a href="whitepaper.html" class="act-link">Download &amp; share →</a>
-        </div>
-        <div class="act-card">
-          <div class="act-num">04</div>
-          <h3>Switch to Chronological</h3>
-          <p>Every major platform hides the chronological feed option in settings because they don't want you to use it. Find it. Use it.</p>
-          <a href="howto.html" class="act-link">How to do it →</a>
-        </div>
-        <div class="act-card">
-          <div class="act-num">05</div>
-          <h3>For Families</h3>
-          <p>If you have lost a child to algorithmic violence, we want to hear from you. Your child's name belongs on the remembrance list — if you want it there.</p>
-          <a href="mailto:families@hoffmanlenses.org" class="act-link">Contact us →</a>
-        </div>
-        <div class="act-card">
-          <div class="act-num">06</div>
-          <h3>For Developers</h3>
-          <p>The browser is open source. Fork it. Improve it. Add OCR support. Help us read the text that platforms hide in images. This tool belongs to the world.</p>
-          <a href="https://github.com/HoffmanLensesInitiative/hoffman-core"
-             target="_blank" rel="noopener" class="act-link">Contribute on GitHub →</a>
-        </div>
       </div>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section class="section about-section" id="about">
-    <div class="container about-inner">
-      <div class="about-text">
+  <div class="about-band" id="about">
+    <div class="about-band-inner">
+      <div>
         <div class="section-label">About</div>
-        <h2 class="section-title-sm">The Hoffman Lenses Initiative</h2>
+        <h2>The Hoffman Lenses Initiative</h2>
         <p>
-          An independent, non-partisan, non-commercial project dedicated to making 
+          An independent, non-partisan, non-commercial project dedicated to making
           Behavioral Manipulation Systems visible, legally accountable, and ultimately obsolete.
         </p>
         <p>
-          Not funded by platforms, advertisers, or political organizations. 
-          We accept no money from any entity with a financial interest in the 
+          Not funded by platforms, advertisers, or political organizations.
+          We accept no money from any entity with a financial interest in the
           continuation of behavioral manipulation technology.
         </p>
         <p>
-          Named for the glasses in John Carpenter's 1988 film <em>They Live</em> — 
-          which allowed the wearer to see the hidden messages embedded in ordinary reality. 
+          Named for the glasses in John Carpenter's 1988 film <em>They Live</em> —
+          which allowed the wearer to see the hidden messages embedded in ordinary reality.
           Once you see what the machine is doing to you, you cannot unsee it.
         </p>
       </div>
@@ -516,7 +369,7 @@
             <em>GitHub — Open Source</em>
           </span>
         </a>
-        <a href="#remembrance" class="about-link">
+        <a href="remembrance.html" class="about-link">
           <span class="about-link-icon">◌</span>
           <span>
             <strong>Remembrance</strong>
@@ -539,7 +392,7 @@
         </a>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- FOOTER -->
   <footer class="footer">
