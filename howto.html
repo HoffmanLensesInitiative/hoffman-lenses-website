@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How to switch to chronological feeds on every major platform — Instagram, TikTok, Facebook, Twitter/X, YouTube, Reddit.">
+  <meta property="og:title" content="Switch to Chronological — Hoffman Lenses Initiative">
+  <meta property="og:description" content="Every major platform hides the chronological feed option because they don't want you to use it. Step-by-step instructions to find it.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hoffmanlenses.org/howto.html">
+  <title>Switch to Chronological — Hoffman Lenses Initiative</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .howto-hero {
+      background: #080C10;
+      border-bottom: 1px solid rgba(26,58,92,0.4);
+      padding: 120px 24px 72px;
+      text-align: center;
+    }
+    .howto-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #2A4A6A;
+      margin-bottom: 24px;
+    }
+    .howto-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 900;
+      color: #E8EEF4;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    .howto-title em {
+      color: #5A9ABE;
+      font-style: italic;
+    }
+    .howto-lede {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #6A8EAE;
+      max-width: 640px;
+      margin: 0 auto 1em;
+    }
+
+    /* ── Why this matters callout ── */
+    .howto-why {
+      background: rgba(26,58,92,0.15);
+      border-left: 3px solid #1A3A5C;
+      max-width: 760px;
+      margin: 48px auto 0;
+      padding: 28px 32px;
+      text-align: left;
+      border-radius: 0 4px 4px 0;
+    }
+    .howto-why-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #2A4A6A;
+      margin-bottom: 12px;
+    }
+    .howto-why p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: #8AAEC8;
+      margin: 0 0 0.75em;
+    }
+    .howto-why p:last-child { margin-bottom: 0; }
+
+    /* ── Platform cards ── */
+    .howto-layout {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+    }
+    .howto-platform {
+      margin-bottom: 56px;
+      border-top: 1px solid rgba(26,58,92,0.3);
+      padding-top: 48px;
+    }
+    .howto-platform:first-child { border-top: none; padding-top: 0; }
+
+    .howto-platform-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .howto-platform-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #E8EEF4;
+      margin: 0;
+    }
+    .howto-platform-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 3px;
+      background: rgba(26,58,92,0.4);
+      color: #3A6A8A;
+    }
+    .howto-platform-tag.available { color: #4A9A6A; background: rgba(26,92,58,0.2); }
+    .howto-platform-tag.limited { color: #8A7A3A; background: rgba(92,78,26,0.2); }
+    .howto-platform-tag.none { color: #8A3A3A; background: rgba(92,26,26,0.2); }
+
+    .howto-summary {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: #6A8EAE;
+      margin: 0 0 24px;
+    }
+
+    /* Steps */
+    .howto-section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #2A4A6A;
+      margin: 0 0 12px;
+    }
+    .howto-steps {
+      list-style: none;
+      margin: 0 0 24px;
+      padding: 0;
+    }
+    .howto-steps li {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(26,58,92,0.15);
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: #C8D8E8;
+    }
+    .howto-steps li:last-child { border-bottom: none; }
+    .howto-step-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #2A4A6A;
+      min-width: 20px;
+      padding-top: 4px;
+    }
+    .howto-steps code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85em;
+      background: rgba(26,58,92,0.3);
+      padding: 1px 6px;
+      border-radius: 3px;
+      color: #A8D4E6;
+    }
+
+    /* Sub-section for mobile vs desktop */
+    .howto-subsections {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 600px) {
+      .howto-subsections { grid-template-columns: 1fr; }
+    }
+    .howto-subsection {
+      background: rgba(8,12,16,0.6);
+      border: 1px solid rgba(26,58,92,0.25);
+      border-radius: 6px;
+      padding: 20px;
+    }
+    .howto-subsection-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #3A6A8A;
+      margin: 0 0 12px;
+    }
+
+    /* Note blocks */
+    .howto-note {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: #4A6A8A;
+      font-style: italic;
+      padding: 12px 0 0;
+      border-top: 1px solid rgba(26,58,92,0.2);
+    }
+
+    /* Closing section */
+    .howto-closing {
+      background: rgba(26,58,92,0.1);
+      border: 1px solid rgba(26,58,92,0.25);
+      border-radius: 6px;
+      padding: 40px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    .howto-closing h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #E8EEF4;
+      margin: 0 0 16px;
+    }
+    .howto-closing p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: #6A8EAE;
+      max-width: 520px;
+      margin: 0 auto 24px;
+    }
+    .howto-closing-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .howto-closing-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #5A9ABE;
+      text-decoration: none;
+      border: 1px solid rgba(90,154,190,0.3);
+      padding: 10px 20px;
+      border-radius: 3px;
+      transition: all 0.2s;
+    }
+    .howto-closing-links a:hover {
+      border-color: rgba(90,154,190,0.7);
+      color: #A8D4E6;
+      background: rgba(90,154,190,0.08);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <span class="nav-logo-hl">H</span>OFFMAN
+        <span class="nav-logo-sep">|</span>
+        <span class="nav-logo-hl">L</span>ENSES
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#case">The Case</a></li>
+        <li><a href="/#browser">The Browser</a></li>
+        <li><a href="remembrance.html">Remembrance</a></li>
+        <li><a href="families.html">Families</a></li>
+        <li><a href="whitepaper.html" class="nav-cta">White Paper</a></li>
+      </ul>
+      <button class="nav-hamburger" aria-label="Menu" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="howto-hero">
+    <div class="howto-eyebrow">Hoffman Lenses Initiative — Take Action</div>
+    <h1 class="howto-title">
+      Switch to <em>Chronological</em>
+    </h1>
+    <p class="howto-lede">
+      Every major platform hides the chronological feed option deep in settings,
+      because they do not want you to use it.
+    </p>
+    <p class="howto-lede">
+      The algorithmic feed exists to maximize your time on platform. The chronological
+      feed exists to show you what the people you chose to follow actually posted.
+      Step-by-step instructions for every major platform are below.
+    </p>
+    <div class="howto-why">
+      <div class="howto-why-label">Why it matters</div>
+      <p>
+        The recommendation algorithm does not show you content in the order it was posted.
+        It selects and sequences content based on what it predicts will hold your
+        attention longest — which is correlated with emotional intensity, not quality or relevance.
+      </p>
+      <p>
+        Switching to chronological does not remove you from the platform. It removes the
+        algorithm's ability to choose what you see next. You remain in control of who
+        you follow — and you see what they actually post, when they post it.
+      </p>
+    </div>
+  </header>
+
+  <!-- INSTRUCTIONS -->
+  <main class="howto-layout">
+
+    <!-- INSTAGRAM -->
+    <section class="howto-platform" id="instagram">
+      <div class="howto-platform-header">
+        <h2 class="howto-platform-name">Instagram</h2>
+        <span class="howto-platform-tag available">Chronological available</span>
+      </div>
+      <p class="howto-summary">
+        Instagram restored chronological options in 2022 after years of public pressure.
+        There are now two non-algorithmic feed modes: <strong>Following</strong> (everyone you follow,
+        in reverse chronological order) and <strong>Favorites</strong> (up to 50 accounts you
+        designate, in reverse chronological order).
+      </p>
+
+      <div class="howto-section-label">On mobile (iOS &amp; Android)</div>
+      <ol class="howto-steps">
+        <li><span class="howto-step-num">01</span>Open Instagram and tap the <strong>Home</strong> icon (house) in the bottom bar.</li>
+        <li><span class="howto-step-num">02</span>Tap the <strong>Instagram logo</strong> at the top left of the screen. A dropdown appears.</li>
+        <li><span class="howto-step-num">03</span>Select <code>Following</code> or <code>Favorites</code>.</li>
+        <li><span class="howto-step-num">04</span>Instagram will not remember this choice. You must tap the logo each session to switch back.</li>
+      </ol>
+
+      <div class="howto-section-label">To set up Favorites</div>
+      <ol class="howto-steps">
+        <li><span class="howto-step-num">01</span>Go to any account's profile page.</li>
+        <li><span class="howto-step-num">02</span>Tap the <strong>Following</strong> button, then tap <code>Add to Favorites</code>.</li>
+        <li><span class="howto-step-num">03</span>Repeat for up to 50 accounts. These will appear in the Favorites feed in chronological order.</li>
+      </ol>
+
+      <p class="howto-note">Note: The Reels tab and the Explore tab always use the algorithmic feed. Chronological applies only to the main home feed.</p>
+    </section>
+
+    <!-- TIKTOK -->
+    <section class="howto-platform" id="tiktok">
+      <div class="howto-platform-header">
+        <h2 class="howto-platform-name">TikTok</h2>
+        <span class="howto-platform-tag available">Chronological available</span>
+      </div>
+      <p class="howto-summary">
+        TikTok has a <strong>Following</strong> feed that shows posts from accounts you follow
+        in reverse chronological order. It is accessible via the tab bar at the top of the screen,
+        but TikTok defaults to the <strong>For You</strong> algorithmic feed on every launch.
+      </p>
+
+      <div class="howto-section-label">On mobile</div>
+      <ol class="howto-steps">
+        <li><span class="howto-step-num">01</span>Open TikTok. At the top of the screen you will see tabs: <code>Following</code> and <code>For You</code>.</li>
+        <li><span class="howto-step-num">02</span>Tap <code>Following</code>.</li>
+        <li><span class="howto-step-num">03</span>You will now see posts from accounts you follow in reverse chronological order.</li>
+        <li><span class="howto-step-num">04</span>TikTok resets to <code>For You</code> every time you close and reopen the app.</li>
+      </ol>
+
+      <p class="howto-note">Note: TikTok has no web-based chronological feed. The Following tab is mobile-only. The For You algorithm is the default and TikTok does not allow you to change this default.</p>
+    </section>
+
+    <!-- FACEBOOK -->
+    <section class="howto-platform" id="facebook">
+      <div class="howto-platform-header">
+        <h2 class="howto-platform-name">Facebook</h2>
+        <span class="howto-platform-tag limited">Partially available</span>
+      </div>
+      <p class="howto-summary">
+        Facebook offers a <strong>Recent</strong> feed that shows posts in reverse chronological order,
+        but it is buried in the menu and Facebook actively promotes the algorithmic Home feed.
+        Facebook also allows you to create a <strong>Favorites</strong> list of up to 30 accounts
+        whose posts appear near the top of your feed.
+      </p>
+
+      <div class="howto-subsections">
+        <div class="howto-subsection">
+          <div class="howto-subsection-title">Mobile (iOS &amp; Android)</div>
+          <ol class="howto-steps">
+            <li><span class="howto-step-num">01</span>Tap the three-line <strong>Menu</strong> icon (bottom right on iOS, top right on Android).</li>
+            <li><span class="howto-step-num">02</span>Scroll down and tap <code>See more</code>.</li>
+            <li><span class="howto-step-num">03</span>Find and tap <code>Most Recent</code>.</li>
+            <li><span class="howto-step-num">04</span>Facebook will reset to Home on next launch.</li>
+          </ol>
+        </div>
+        <div class="howto-subsection">
+          <div class="howto-subsection-title">Desktop (web)</div>
+          <ol class="howto-steps">
+            <li><span class="howto-step-num">01</span>In the left sidebar, look for <code>Most Recent</code> under the Feeds section.</li>
+            <li><span class="howto-step-num">02</span>If not visible, click <code>See more</code> in the sidebar to expand the list.</li>
+            <li><span class="howto-step-num">03</span>Click <code>Most Recent</code>.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="howto-section-label">To set Favorites (keeps key accounts visible)</div>
+      <ol class="howto-steps">
+        <li><span class="howto-step-num">01</span>Go to a friend's profile or a Page.</li>
+        <li><span class="howto-step-num">02</span>Click or tap <code>Friends</code> or <code>Following</code>, then select <code>Add to Favorites</code>.</li>
+        <li><span class="howto-step-num">03</span>Favorites posts appear near the top of your algorithmic feed even when using Home view.</li>
+      </ol>
+
+      <p class="howto-note">Note: Facebook does not allow you to set Most Recent as your default feed. Every session will start on the algorithmic Home feed.</p>
+    </section>
+
+    <!-- TWITTER/X -->
+    <section class="howto-platform" id="twitter-x">
+      <div class="howto-platform-header">
+        <h2 class="howto-platform-name">Twitter / X</h2>
+        <span class="howto-platform-tag available">Chronological available</span>
+      </div>
+      <p class="howto-summary">
+        Twitter/X has a <strong>Following</strong> tab that shows posts from accounts you follow
+        in reverse chronological order. Under Elon Musk's ownership the default was changed
+        to the algorithmic <strong>For You</strong> feed, but the Following tab remains accessible.
+      </p>
+
+      <div class="howto-subsections">
+        <div class="howto-subsection">
+          <div class="howto-subsection-title">Mobile</div>
+          <ol class="howto-steps">
+            <li><span class="howto-step-num">01</span>Open the app. At the top you will see two tabs: <code>For you</code> and <code>Following</code>.</li>
+            <li><span class="howto-step-num">02</span>Tap <code>Following</code>.</li>
+            <li><span class="howto-step-num">03</span>X will remember this choice within a session but typically resets to <code>For you</code> on relaunch.</li>
+          </ol>
+        </div>
+        <div class="howto-subsection">
+          <div class="howto-subsection-title">Desktop (web)</div>
+          <ol class="howto-steps">
+            <li><span class="howto-step-num">01</span>On the Home timeline, look for the star icon <strong>☆</strong> at the top right of the feed column.</li>
+            <li><span class="howto-step-num">02</span>Click it to open the feed type menu.</li>
+            <li><span class="howto-step-num">03</span>Select <code>Following</code>.</li>
+          </ol>
+        </div>
+      </div>
+
+      <p class="howto-note">Note: X Premium subscribers can set Following as their default feed in Settings → Accessibility, display, and languages → Display → Latest tweets. Free accounts cannot change the default.</p>
+    </section>
+
+    <!-- YOUTUBE -->
+    <section class="howto-platform" id="youtube">
+      <div class="howto-platform-header">
+        <h2 class="howto-platform-name">YouTube</h2>
+        <span class="howto-platform-tag limited">Partial — use Subscriptions tab</span>
+      </div>
+      <p class="howto-summary">
+        YouTube does not offer a true chronological feed. The <strong>Subscriptions</strong> tab
+        is the closest equivalent: it shows recent uploads from channels you subscribe to,
+        sorted by upload date. The Home tab is entirely algorithmic.
+      </p>
+
+      <div class="howto-section-label">On mobile and desktop</div>
+      <ol class="howto-steps">
+        <li><span class="howto-step-num">01</span>On mobile: tap the <strong>Subscriptions</strong> icon in the bottom navigation bar (the grid of squares).</li>
+        <li><span class="howto-step-num">02</span>On desktop: click <code>Subscriptions</code> in the left sidebar.</li>
+        <li><span class="howto-step-num">03</span>You will see recent uploads from your subscribed channels, with the most recent at the top.</li>
+        <li><span class="howto-step-num">04</span>Make Subscriptions your default landing page by bookmarking <code>youtube.com/feed/subscriptions</code>.</li>
+      </ol>
+
+      <div class="howto-section-label">Additional steps to reduce algorithm exposure</div>
+      <ol class="howto-steps">
+        <li><span class="howto-step-num">01</span>Pause your watch history: Settings → History &amp; privacy → Pause watch history. This limits the algorithm's data.</li>
+        <li><span class="howto-step-num">02</span>Clear your watch history periodically to reset recommendations.</li>
+        <li><span class="howto-step-num">03</span>Use browser extensions such as <em>Unhook</em> or <em>DF YouTube</em> to hide recommendations entirely on desktop.</li>
+      </ol>
+
+      <p class="howto-note">Note: YouTube's Shorts feed (vertical video) has no chronological option and is purely algorithmic. Avoiding the Shorts tab reduces algorithm exposure significantly.</p>
+    </section>
+
+    <!-- REDDIT -->
+    <section class="howto-platform" id="reddit">
+      <div class="howto-platform-header">
+        <h2 class="howto-platform-name">Reddit</h2>
+        <span class="howto-platform-tag available">Chronological available</span>
+      </div>
+      <p class="howto-summary">
+        Reddit's default <strong>Home</strong> feed uses an algorithm that mixes popular posts
+        from communities you join. Switching to chronological is straightforward using the
+        sort controls, either for your Home feed or within individual communities (subreddits).
+      </p>
+
+      <div class="howto-section-label">Sort your Home feed by New</div>
+      <ol class="howto-steps">
+        <li><span class="howto-step-num">01</span>On mobile: on the Home feed, tap the sort button (shows <code>Best</code>, <code>Hot</code>, or similar) near the top.</li>
+        <li><span class="howto-step-num">02</span>Select <code>New</code>. Your feed will now show recent posts in chronological order.</li>
+        <li><span class="howto-step-num">03</span>On desktop: at the top of your Home feed, click <code>New</code> in the sort bar (next to Hot, Top, Rising).</li>
+      </ol>
+
+      <div class="howto-section-label">Sort individual communities by New</div>
+      <ol class="howto-steps">
+        <li><span class="howto-step-num">01</span>Navigate to any subreddit (community).</li>
+        <li><span class="howto-step-num">02</span>Select <code>New</code> from the sort options. This applies per-subreddit.</li>
+        <li><span class="howto-step-num">03</span>Reddit remembers your per-subreddit sort preference when logged in.</li>
+      </ol>
+
+      <div class="howto-section-label">Use the /new feed directly</div>
+      <ol class="howto-steps">
+        <li><span class="howto-step-num">01</span>Navigate to <code>reddit.com/new</code> on desktop for a chronological view of all recent posts from your communities.</li>
+        <li><span class="howto-step-num">02</span>Bookmark this URL to bypass the algorithmic Home feed entirely.</li>
+      </ol>
+
+      <p class="howto-note">Note: Reddit's redesigned app increasingly promotes algorithmic discovery features. The New sort is still available but Reddit has begun inserting promoted posts and recommendations into New feeds as well.</p>
+    </section>
+
+    <!-- CLOSING -->
+    <div class="howto-closing">
+      <h3>This is one step. Not the only step.</h3>
+      <p>
+        Switching to chronological reduces algorithmic manipulation of your attention.
+        It does not eliminate behavioral manipulation systems. Those systems continue
+        to operate — on other users, including children — regardless of your personal
+        settings.
+      </p>
+      <p>
+        The Hoffman Browser makes those systems visible for any page you visit.
+        The white paper documents the legal case for abolishing them entirely.
+      </p>
+      <div class="howto-closing-links">
+        <a href="/#browser">Get the Browser</a>
+        <a href="whitepaper.html">Read the White Paper</a>
+        <a href="families.html">Support for Families</a>
+        <a href="remembrance.html">Remembrance</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <span class="footer-logo-hl">HOFFMAN LENSES</span>
+        <span class="footer-tagline">Making the invisible visible.</span>
+      </div>
+      <div class="footer-copy">
+        <p>© 2026 The Hoffman Lenses Initiative.</p>
+        <p>White paper released under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons CC BY 4.0</a>. Browser released under MIT License.</p>
+        <p>This site contains no advertising, no tracking, no behavioral manipulation of any kind.</p>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:contact@hoffmanlenses.org">Contact</a>
+        <a href="mailto:press@hoffmanlenses.org">Press</a>
+        <a href="mailto:families@hoffmanlenses.org">Families</a>
+        <a href="https://github.com/HoffmanLensesInitiative" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="footer-dedication">
+      They deserved better than to be engagement metrics.
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

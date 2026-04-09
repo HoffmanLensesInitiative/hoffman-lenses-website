@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Resources for families who have lost a child to algorithmic harm — legal resources, community, and ways to make their story matter.">
+  <meta property="og:title" content="For Families — Hoffman Lenses Initiative">
+  <meta property="og:description" content="If you have lost a child, or are watching one be harmed, you are not alone. Resources, legal support, and community.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hoffmanlenses.org/families.html">
+  <title>For Families — Hoffman Lenses Initiative</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .fam-hero {
+      background: #080C10;
+      border-bottom: 1px solid rgba(26,58,92,0.4);
+      padding: 120px 24px 72px;
+      text-align: center;
+    }
+    .fam-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #2A4A6A;
+      margin-bottom: 24px;
+    }
+    .fam-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 900;
+      color: #E8EEF4;
+      line-height: 1.15;
+      margin-bottom: 32px;
+    }
+    .fam-lede {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #6A8EAE;
+      max-width: 640px;
+      margin: 0 auto 1em;
+    }
+    .fam-lede:last-child { margin-bottom: 0; }
+    .fam-lede strong { color: #A8C4D8; font-weight: 600; }
+
+    /* ── Layout ── */
+    .fam-layout {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+    }
+
+    /* ── Section blocks ── */
+    .fam-section {
+      margin-bottom: 64px;
+    }
+    .fam-section-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #2A4A6A;
+      margin-bottom: 12px;
+    }
+    .fam-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #E8EEF4;
+      margin: 0 0 20px;
+      line-height: 1.25;
+    }
+    .fam-section p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #8AAEC8;
+      margin: 0 0 1em;
+    }
+    .fam-section p:last-child { margin-bottom: 0; }
+    .fam-section p a {
+      color: #5A9ABE;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .fam-section p a:hover { color: #A8D4E6; }
+
+    /* ── Resource cards ── */
+    .fam-resource-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 28px 0;
+    }
+    @media (max-width: 600px) {
+      .fam-resource-grid { grid-template-columns: 1fr; }
+    }
+    .fam-resource {
+      background: rgba(8,12,16,0.8);
+      border: 1px solid rgba(26,58,92,0.3);
+      border-radius: 6px;
+      padding: 24px;
+    }
+    .fam-resource-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #2A4A6A;
+      margin-bottom: 8px;
+    }
+    .fam-resource h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #C8D8E8;
+      margin: 0 0 10px;
+    }
+    .fam-resource p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: #5A7A9A;
+      margin: 0 0 14px;
+    }
+    .fam-resource a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: #5A9ABE;
+      text-decoration: none;
+      border: 1px solid rgba(90,154,190,0.3);
+      padding: 6px 12px;
+      border-radius: 3px;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+    .fam-resource a:hover {
+      border-color: rgba(90,154,190,0.7);
+      background: rgba(90,154,190,0.08);
+      color: #A8D4E6;
+    }
+
+    /* ── Contact block ── */
+    .fam-contact {
+      background: rgba(26,58,92,0.12);
+      border: 1px solid rgba(26,58,92,0.3);
+      border-radius: 6px;
+      padding: 40px;
+      margin-top: 48px;
+    }
+    .fam-contact-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #2A4A6A;
+      margin-bottom: 12px;
+    }
+    .fam-contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #E8EEF4;
+      margin: 0 0 16px;
+    }
+    .fam-contact p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #6A8EAE;
+      margin: 0 0 1em;
+      max-width: 580px;
+    }
+    .fam-contact p:last-of-type { margin-bottom: 24px; }
+    .fam-contact-email {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      color: #5A9ABE;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(90,154,190,0.4);
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+    .fam-contact-email:hover { color: #A8D4E6; }
+
+    /* ── Privacy callout ── */
+    .fam-privacy {
+      border-left: 3px solid #1A3A5C;
+      padding: 20px 24px;
+      margin: 32px 0 0;
+      background: rgba(8,12,16,0.5);
+    }
+    .fam-privacy-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #2A4A6A;
+      margin-bottom: 8px;
+    }
+    .fam-privacy p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: #4A6A8A;
+      margin: 0 0 0.5em;
+    }
+    .fam-privacy p:last-child { margin-bottom: 0; }
+
+    /* ── Divider ── */
+    .fam-divider {
+      border: none;
+      border-top: 1px solid rgba(26,58,92,0.25);
+      margin: 56px 0;
+    }
+
+    /* ── Quote block ── */
+    .fam-quote {
+      padding: 32px 0;
+      text-align: center;
+    }
+    .fam-quote blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-style: italic;
+      color: #6A8EAE;
+      line-height: 1.6;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+    .fam-quote cite {
+      display: block;
+      margin-top: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #2A4A6A;
+      font-style: normal;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <span class="nav-logo-hl">H</span>OFFMAN
+        <span class="nav-logo-sep">|</span>
+        <span class="nav-logo-hl">L</span>ENSES
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#case">The Case</a></li>
+        <li><a href="/#browser">The Browser</a></li>
+        <li><a href="remembrance.html">Remembrance</a></li>
+        <li><a href="families.html" aria-current="page">Families</a></li>
+        <li><a href="whitepaper.html" class="nav-cta">White Paper</a></li>
+      </ul>
+      <button class="nav-hamburger" aria-label="Menu" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="fam-hero">
+    <div class="fam-eyebrow">Hoffman Lenses Initiative — Support</div>
+    <h1 class="fam-title">For Families</h1>
+    <p class="fam-lede">
+      If you have lost a child — or are watching one being harmed — you are not alone.
+      What happened is not a tragedy without cause. It is a foreseeable outcome
+      of systems that were designed to hold children's attention regardless of the cost.
+    </p>
+    <p class="fam-lede">
+      <strong>The platforms knew.</strong> Internal research, whistleblower testimony,
+      and court proceedings have established this. Your grief is not groundless.
+      Your anger is not irrational. And your story may be the thing that changes what happens
+      to the next family.
+    </p>
+  </header>
+
+  <main class="fam-layout">
+
+    <!-- LEGAL RESOURCES -->
+    <section class="fam-section">
+      <div class="fam-section-eyebrow">Legal Resources</div>
+      <h2>Your legal options may be broader than you know.</h2>
+      <p>
+        Courts are actively reconsidering platform immunity. A federal appeals court ruled in 2024 that
+        recommendation algorithms — not just hosted content — may be subject to liability. Several law
+        firms now specialize in platform accountability cases at no upfront cost to families.
+      </p>
+
+      <div class="fam-resource-grid">
+        <div class="fam-resource">
+          <div class="fam-resource-label">Law Firm</div>
+          <h3>Social Media Victims Law Center</h3>
+          <p>
+            Specializes in cases involving social media harm to minors. Free case evaluation.
+            Has represented families in suits against Meta, TikTok, Snap, and Google.
+          </p>
+          <a href="https://socialmediavictims.org" target="_blank" rel="noopener">socialmediavictims.org</a>
+        </div>
+        <div class="fam-resource">
+          <div class="fam-resource-label">Nonprofit Advocacy</div>
+          <h3>Molly Rose Foundation</h3>
+          <p>
+            Founded by Ian Russell after the death of his daughter Molly. Campaigns for platform
+            accountability and provides support to bereaved families in the UK and internationally.
+          </p>
+          <a href="https://www.mollyrosefoundation.org" target="_blank" rel="noopener">mollyrosefoundation.org</a>
+        </div>
+        <div class="fam-resource">
+          <div class="fam-resource-label">Legal Research</div>
+          <h3>Electronic Frontier Foundation</h3>
+          <p>
+            Tracks platform liability cases and Section 230 reform. The EFF's case database
+            documents relevant rulings on algorithmic harm and content recommendation.
+          </p>
+          <a href="https://www.eff.org" target="_blank" rel="noopener">eff.org</a>
+        </div>
+        <div class="fam-resource">
+          <div class="fam-resource-label">Policy &amp; Research</div>
+          <h3>Center for Humane Technology</h3>
+          <p>
+            Founded by former tech insiders. Publishes research on algorithmic harm and
+            supports families seeking to make documented cases in policy and legal contexts.
+          </p>
+          <a href="https://www.humanetech.com" target="_blank" rel="noopener">humanetech.com</a>
+        </div>
+      </div>
+
+      <p>
+        The white paper produced by the Hoffman Lenses Initiative documents the known evidence
+        of platform harm and the legal theory of the case. It is available for use by families,
+        attorneys, and advocates under Creative Commons license.
+      </p>
+      <p>
+        <a href="whitepaper.html">Read the white paper →</a>
+      </p>
+    </section>
+
+    <hr class="fam-divider">
+
+    <!-- DOCUMENTATION -->
+    <section class="fam-section">
+      <div class="fam-section-eyebrow">Documenting What Happened</div>
+      <h2>Evidence you may not know you have.</h2>
+      <p>
+        If your child used a social media platform, that platform holds records of every piece
+        of content served to them by its algorithm. In the United States, you can request this
+        data from platforms under existing data portability laws. In the UK and EU, GDPR gives
+        you a right to this data regardless of whether legal proceedings are underway.
+      </p>
+      <p>
+        Preserve the following immediately, before anything is deleted or accounts are closed:
+      </p>
+      <ul style="font-family:'Source Serif 4',serif;font-size:1rem;line-height:1.8;color:#8AAEC8;padding-left:24px;margin:0 0 1em;">
+        <li>The child's device, ideally unmodified</li>
+        <li>Any social media accounts (do not delete; preserve login credentials)</li>
+        <li>Screenshots of content that was served, if accessible</li>
+        <li>Screen time reports, if enabled on the device</li>
+        <li>Any messages, searches, or saved content</li>
+      </ul>
+      <p>
+        Submit a data access request to each platform your child used. Most platforms provide
+        a downloadable archive of account activity including content served, watch history,
+        and interaction signals. This data is what the algorithm used to build the profile
+        it used to target your child.
+      </p>
+      <p>
+        An attorney specializing in platform cases can issue a litigation hold letter,
+        which legally obligates the platform to preserve records beyond their standard
+        deletion schedules. This should be done as early as possible.
+      </p>
+    </section>
+
+    <hr class="fam-divider">
+
+    <!-- COMMUNITY / TESTIMONY -->
+    <section class="fam-section">
+      <div class="fam-section-eyebrow">Your Story Matters</div>
+      <h2>Testimony changes laws. Yours may be what tips the balance.</h2>
+      <p>
+        The families who have spoken publicly — Ian Russell, Matthew Bergman's clients,
+        the Andersons, the Blackwells — have moved cases and legislation forward in ways
+        that a decade of academic research could not. Platforms count on families remaining
+        silent in their grief. The ones who have not stayed silent have changed what is
+        politically and legally possible.
+      </p>
+      <p>
+        You should never feel obligated to speak publicly. Advocacy takes many forms,
+        including private testimony to regulators, letters to elected officials, or simply
+        allowing your family's case to proceed in court. But if you are willing to share
+        your experience, organizations exist to amplify your voice.
+      </p>
+
+      <div class="fam-resource-grid">
+        <div class="fam-resource">
+          <div class="fam-resource-label">US Legislative Advocacy</div>
+          <h3>ParentsTogether Foundation</h3>
+          <p>
+            Connects bereaved families with congressional offices and coordinates testimony
+            for platform accountability hearings.
+          </p>
+          <a href="https://parents-together.org" target="_blank" rel="noopener">parents-together.org</a>
+        </div>
+        <div class="fam-resource">
+          <div class="fam-resource-label">Media &amp; Public Advocacy</div>
+          <h3>Stop Hate for Profit</h3>
+          <p>
+            Works with families affected by platform harms to support media outreach
+            and corporate advertiser pressure campaigns.
+          </p>
+          <a href="https://stophateforprofit.org" target="_blank" rel="noopener">stophateforprofit.org</a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="fam-divider">
+
+    <!-- WHAT WE ARE BUILDING -->
+    <section class="fam-section">
+      <div class="fam-section-eyebrow">What Hoffman Lenses Is Building</div>
+      <h2>Making the harm visible — for everyone who comes after.</h2>
+      <p>
+        The Hoffman Browser is an open-source desktop browser that analyzes any webpage
+        for behavioral manipulation techniques in real time, using a local AI model.
+        Nothing leaves your device. No data is collected. No account is required.
+      </p>
+      <p>
+        The Behavioral Manipulation Intelligence Database (BMID) documents, platform by platform,
+        what each company knew and when, what harms have been documented and by whom, and
+        what the financial motive behind each design decision is.
+      </p>
+      <p>
+        Both tools are free. Both are open-source. Both are built specifically so that the
+        argument "we didn't know" becomes impossible to sustain — in court, in legislatures,
+        and in public.
+      </p>
+      <p>
+        <a href="/#browser">Learn about the browser →</a>
+      </p>
+    </section>
+
+    <!-- CONTACT -->
+    <div class="fam-contact">
+      <div class="fam-contact-eyebrow">Contact</div>
+      <h2>Reach us directly.</h2>
+      <p>
+        If you have lost a child or are supporting a family who has, you can reach the Hoffman
+        Lenses Initiative directly. We are not a law firm and we cannot provide legal advice,
+        but we can connect you with organizations that can, share documentation that may support
+        your case, and listen.
+      </p>
+      <p>
+        We will respond to every message from a bereaved family. That is not a policy. It is a commitment.
+      </p>
+      <a href="mailto:families@hoffmanlenses.org" class="fam-contact-email">families@hoffmanlenses.org</a>
+
+      <div class="fam-privacy">
+        <div class="fam-privacy-label">Privacy</div>
+        <p>
+          Your email is not shared with any third party, ever. We do not use email marketing
+          software. Emails to this address are read by a human being and replied to by one.
+        </p>
+        <p>
+          If you prefer additional privacy, you may contact us via ProtonMail at the same address,
+          which supports end-to-end encrypted email from other ProtonMail accounts.
+        </p>
+      </div>
+    </div>
+
+    <!-- QUOTE -->
+    <div class="fam-quote">
+      <blockquote>
+        "Molly did not take her own life. She was killed by an algorithm that served
+        her content it knew was harmful, to a child it knew was vulnerable,
+        because engagement is more profitable than safety."
+        <cite>— Ian Russell, father of Molly Russell, 14</cite>
+      </blockquote>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <span class="footer-logo-hl">HOFFMAN LENSES</span>
+        <span class="footer-tagline">Making the invisible visible.</span>
+      </div>
+      <div class="footer-copy">
+        <p>© 2026 The Hoffman Lenses Initiative.</p>
+        <p>White paper released under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons CC BY 4.0</a>. Browser released under MIT License.</p>
+        <p>This site contains no advertising, no tracking, no behavioral manipulation of any kind.</p>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:contact@hoffmanlenses.org">Contact</a>
+        <a href="mailto:press@hoffmanlenses.org">Press</a>
+        <a href="mailto:families@hoffmanlenses.org">Families</a>
+        <a href="https://github.com/HoffmanLensesInitiative" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="footer-dedication">
+      They deserved better than to be engagement metrics.
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

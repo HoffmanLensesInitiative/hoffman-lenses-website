@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Remembrance — Hoffman Lenses Initiative. We say their names. We do not look away.">
+  <meta property="og:title" content="Remembrance — Hoffman Lenses Initiative">
+  <meta property="og:description" content="These are people. Not statistics. Not case studies. We say their names.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hoffmanlenses.org/remembrance.html">
+  <title>Remembrance — Hoffman Lenses Initiative</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .rem-hero {
+      background: #080C10;
+      border-bottom: 1px solid rgba(26,58,92,0.4);
+      padding: 120px 24px 72px;
+      text-align: center;
+    }
+    .rem-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #2A4A6A;
+      margin-bottom: 24px;
+    }
+    .rem-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 900;
+      color: #E8EEF4;
+      line-height: 1.15;
+      margin-bottom: 32px;
+    }
+    .rem-lede {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #6A8EAE;
+      max-width: 640px;
+      margin: 0 auto 1.2em;
+    }
+    .rem-lede:last-child { margin-bottom: 0; }
+
+    /* ── Entry list ── */
+    .rem-layout {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+    .rem-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .rem-entry {
+      border-top: 1px solid rgba(26,58,92,0.3);
+      padding: 48px 0 48px 24px;
+      position: relative;
+    }
+    .rem-entry:first-child { border-top: none; padding-top: 32px; }
+    .rem-entry::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 48px;
+      width: 3px;
+      height: calc(100% - 96px);
+      background: #1A3A5C;
+      border-radius: 2px;
+    }
+    .rem-entry:first-child::before { top: 32px; height: calc(100% - 80px); }
+
+    .rem-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      color: #E8EEF4;
+      margin: 0 0 10px;
+    }
+    .rem-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #3A6A8A;
+      margin-bottom: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 10px;
+      align-items: center;
+    }
+    .rem-meta-sep { color: rgba(26,58,92,0.5); }
+    .rem-meta-pending { font-style: italic; text-transform: none; letter-spacing: 0; color: #2A4A6A; font-family: 'Source Serif 4', serif; font-size: 0.85rem; }
+    .rem-bio {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #A8C4D4;
+      max-width: 60ch;
+      margin: 0;
+    }
+    .rem-bio--pending {
+      color: #2A4A6A;
+      font-style: italic;
+    }
+
+    /* ── Context sections ── */
+    .rem-context {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .rem-context-block {
+      border-top: 1px solid rgba(26,58,92,0.3);
+      padding: 56px 0;
+    }
+    .rem-context-block h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #E8EEF4;
+      margin: 0 0 20px;
+    }
+    .rem-context-block p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #A8C4D4;
+      max-width: 62ch;
+      margin: 0 0 1.2em;
+    }
+    .rem-context-block p:last-child { margin-bottom: 0; }
+    .rem-context-block a {
+      color: #5A9ABE;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+    }
+    .rem-context-block a:hover { color: #A8D4E6; }
+
+    /* ── Closing note ── */
+    .rem-closing {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+    .rem-closing-block {
+      border-top: 1px solid rgba(26,58,92,0.3);
+      padding: 56px 0 0;
+    }
+    .rem-closing-block p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #3A6A8A;
+      font-style: italic;
+      margin: 0 0 1em;
+    }
+    .rem-closing-block p:first-child {
+      font-size: 1.1rem;
+      color: #6A8EAE;
+      font-style: normal;
+      font-weight: 600;
+    }
+    .rem-closing-block a {
+      color: #5A9ABE;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .rem-closing-block a:hover { color: #A8D4E6; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <span class="nav-logo-hl">H</span>OFFMAN
+        <span class="nav-logo-sep">|</span>
+        <span class="nav-logo-hl">L</span>ENSES
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#case">The Case</a></li>
+        <li><a href="/#browser">The Browser</a></li>
+        <li><a href="remembrance.html" aria-current="page">Remembrance</a></li>
+        <li><a href="families.html">Families</a></li>
+        <li><a href="whitepaper.html" class="nav-cta">White Paper</a></li>
+      </ul>
+      <button class="nav-hamburger" aria-label="Menu" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="rem-hero">
+    <div class="rem-eyebrow">Hoffman Lenses Initiative — Remembrance</div>
+    <h1 class="rem-title">These are people.<br>We say their names.</h1>
+    <p class="rem-lede">
+      Not statistics. Not case studies. Not evidence in an argument —
+      though their deaths have become that too, necessarily, because the
+      argument must be made and something must change.
+    </p>
+    <p class="rem-lede">
+      But on this page, before anything else, they are people.
+      We say something true about who they were. We do not look away.
+    </p>
+    <p class="rem-lede">
+      This page will grow. There are names we have not yet learned.
+    </p>
+  </header>
+
+  <!-- ENTRIES -->
+  <main id="main-content">
+    <div class="rem-layout">
+      <ol class="rem-list" aria-label="Remembrance entries">
+
+        <!-- JackLynn Blackwell -->
+        <li class="rem-entry" id="jacklynn-blackwell">
+          <h2 class="rem-name">JackLynn Blackwell</h2>
+          <p class="rem-meta">
+            <span>Age 9</span>
+            <span class="rem-meta-sep" aria-hidden="true">·</span>
+            <span>Stephenville, Texas</span>
+            <span class="rem-meta-sep" aria-hidden="true">·</span>
+            <span>February 3, 2026</span>
+          </p>
+          <p class="rem-bio">
+            She loved karaoke. She wanted to be a star.
+            She was nine years old.
+          </p>
+        </li>
+
+        <!-- Molly Russell -->
+        <li class="rem-entry" id="molly-russell">
+          <h2 class="rem-name">Molly Russell</h2>
+          <p class="rem-meta">
+            <span>Age 14</span>
+            <span class="rem-meta-sep" aria-hidden="true">·</span>
+            <span>London, England</span>
+            <span class="rem-meta-sep" aria-hidden="true">·</span>
+            <span>2017</span>
+          </p>
+          <p class="rem-bio">
+            She was creative and bright. In 2022, a UK coroner ruled that Instagram and
+            Pinterest content contributed to her death — the first ruling of its kind anywhere
+            in the world. Her father, Ian Russell, turned grief into testimony and fought
+            to make her name mean something beyond what happened to her.
+          </p>
+        </li>
+
+        <!-- Nylah Anderson -->
+        <li class="rem-entry" id="nylah-anderson">
+          <h2 class="rem-name">Nylah Anderson</h2>
+          <p class="rem-meta">
+            <span>Age 10</span>
+            <span class="rem-meta-sep" aria-hidden="true">·</span>
+            <span>Philadelphia, Pennsylvania</span>
+            <span class="rem-meta-sep" aria-hidden="true">·</span>
+            <span>2021</span>
+          </p>
+          <p class="rem-bio">
+            She was ten years old. Her family alleged that TikTok's algorithm served her a
+            choking challenge that had spread virally across the platform. Her mother,
+            Tawainna Anderson, sued TikTok and became a voice in the fight for algorithmic
+            accountability. A federal appeals court ruled in 2024 that TikTok's algorithm
+            itself — not just the content — may be subject to liability.
+          </p>
+        </li>
+
+        <!-- Amanda Todd -->
+        <li class="rem-entry" id="amanda-todd">
+          <h2 class="rem-name">Amanda Todd</h2>
+          <p class="rem-meta">
+            <span>Age 15</span>
+            <span class="rem-meta-sep" aria-hidden="true">·</span>
+            <span>British Columbia, Canada</span>
+            <span class="rem-meta-sep" aria-hidden="true">·</span>
+            <span>2012</span>
+          </p>
+          <p class="rem-bio">
+            She made a video before she died — holding up hand-written cards asking for
+            someone to notice her pain. Millions did, too late. Her case documented how
+            online harassment and sextortion, amplified across platforms, could destroy
+            a young person's life with no intervention from the systems that carried the content.
+          </p>
+        </li>
+
+        <!-- CJ Dawley -->
+        <li class="rem-entry" id="cj-dawley">
+          <h2 class="rem-name">CJ Dawley</h2>
+          <p class="rem-meta">
+            <span>Age 14</span>
+            <span class="rem-meta-sep" aria-hidden="true">·</span>
+            <span>Kenosha, Wisconsin</span>
+            <span class="rem-meta-sep" aria-hidden="true">·</span>
+            <span class="rem-meta-pending">Year pending confirmation</span>
+          </p>
+          <p class="rem-bio rem-bio--pending">
+            Further details pending director confirmation and public-record verification.
+          </p>
+        </li>
+
+        <!-- Sadie Riggs -->
+        <li class="rem-entry" id="sadie-riggs">
+          <h2 class="rem-name">Sadie Riggs</h2>
+          <p class="rem-meta">
+            <span>Age 15</span>
+            <span class="rem-meta-sep" aria-hidden="true">·</span>
+            <span>Pennsylvania</span>
+            <span class="rem-meta-sep" aria-hidden="true">·</span>
+            <span>2015</span>
+          </p>
+          <p class="rem-bio rem-bio--pending">
+            Further details pending director confirmation and public-record verification.
+          </p>
+        </li>
+
+        <!-- Englyn Roberts -->
+        <li class="rem-entry" id="englyn-roberts">
+          <h2 class="rem-name">Englyn Roberts</h2>
+          <p class="rem-meta">
+            <span class="rem-meta-pending">Details pending director confirmation</span>
+          </p>
+          <p class="rem-bio rem-bio--pending">
+            Further details pending director confirmation and public-record verification.
+          </p>
+        </li>
+
+        <!-- Frankie Thomas -->
+        <li class="rem-entry" id="frankie-thomas">
+          <h2 class="rem-name">Frankie Thomas</h2>
+          <p class="rem-meta">
+            <span class="rem-meta-pending">Details pending director confirmation</span>
+          </p>
+          <p class="rem-bio rem-bio--pending">
+            Further details pending director confirmation and public-record verification.
+          </p>
+        </li>
+
+      </ol>
+    </div>
+
+    <!-- CONTEXT SECTIONS -->
+    <div class="rem-context">
+
+      <div class="rem-context-block">
+        <h2>What happened to them</h2>
+        <p>
+          Each person on this page died in circumstances where algorithmic systems played a
+          documented or legally-established role. The platforms that delivered the content
+          that reached them were not passive infrastructure. They were designed, optimized,
+          and operated by people who had, in most cases, been warned.
+        </p>
+        <p>
+          The UK Coroner's ruling in Molly Russell's case — September 2022 — established
+          for the first time that platform-delivered content formally contributed to a
+          child's death. The finding was not opinion. It was a ruling. Instagram and
+          Pinterest content played a role.
+        </p>
+        <p>
+          That ruling did not appear from nowhere. It was the result of years of work by
+          her family, by investigators, and by the fact that the evidence existed and was
+          allowed into a courtroom. This is what accountability looks like when the system
+          permits it.
+        </p>
+      </div>
+
+      <div class="rem-context-block">
+        <h2>Why we keep this page</h2>
+        <p>
+          We keep this page because names matter. Because the harm these systems cause is
+          not abstract. Because behind every statistic about teen mental health and
+          algorithmic radicalization and platform-amplified self-harm is a specific person
+          who had a name, and a family that is living with what happened.
+        </p>
+        <p>
+          We keep this page because the companies that built and operated these systems
+          have spent enormous resources making the harm feel diffuse and unprovable.
+          Part of Hoffman's work is to refuse that framing. The harm happened to
+          specific people. We know some of their names. We say them here.
+        </p>
+        <p>
+          We keep this page because it is a reminder of what we are building Hoffman for.
+          Not for market share. Not for funding rounds. For JackLynn Blackwell,
+          who was nine years old, and wanted to be a star.
+        </p>
+      </div>
+
+      <div class="rem-context-block">
+        <h2>For families</h2>
+        <p>
+          If you have lost someone and believe algorithmic harm played a role, you are
+          not alone. Information about legal organizations, how to preserve evidence, and
+          how to connect with others going through the same thing is available on the
+          <a href="families.html">Families page</a>.
+        </p>
+        <p>
+          If you believe a name should be added to this page, we review every entry
+          carefully and require verified public-record documentation before publishing.
+          We do not add names without director approval.
+          Contact us at <a href="mailto:families@hoffmanlenses.org">families@hoffmanlenses.org</a>.
+        </p>
+      </div>
+
+      <div class="rem-context-block">
+        <h2>The full case</h2>
+        <p>
+          The legal and ethical framework for why Behavioral Manipulation Systems
+          constitute a documented, foreseeable, and ongoing harm is laid out in
+          the Hoffman Lenses white paper.
+        </p>
+        <p>
+          <a href="whitepaper.html">
+            Read: The Algorithm and the Child — A Human Rights Case for
+            Abolishing Behavioral Manipulation Systems →
+          </a>
+        </p>
+      </div>
+
+    </div>
+
+    <!-- CLOSING NOTE -->
+    <div class="rem-closing">
+      <div class="rem-closing-block">
+        <p>They deserved better than to be engagement metrics.</p>
+        <p>
+          This page will be updated as names are confirmed and approved for publication.
+          Several entries above are incomplete pending director review and public-record
+          verification. There are names we have not yet learned.
+        </p>
+        <p>
+          If you know a name, contact us at
+          <a href="mailto:families@hoffmanlenses.org">families@hoffmanlenses.org</a>.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <span class="footer-logo-hl">HOFFMAN LENSES</span>
+        <span class="footer-tagline">Making the invisible visible.</span>
+      </div>
+      <div class="footer-copy">
+        <p>© 2026 The Hoffman Lenses Initiative.</p>
+        <p>White paper released under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons CC BY 4.0</a>. Browser released under MIT License.</p>
+        <p>This site contains no advertising, no tracking, no behavioral manipulation of any kind.</p>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:contact@hoffmanlenses.org">Contact</a>
+        <a href="mailto:press@hoffmanlenses.org">Press</a>
+        <a href="mailto:families@hoffmanlenses.org">Families</a>
+        <a href="https://github.com/HoffmanLensesInitiative" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="footer-dedication">
+      They deserved better than to be engagement metrics.
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
