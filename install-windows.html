@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Install Hoffman Browser on Windows — Hoffman Lenses</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap');
+
+  :root {
+    --bg: #0d0f12;
+    --bg2: #13161b;
+    --bg3: #1a1e25;
+    --border: #252a33;
+    --border2: #2e3540;
+    --text: #c8d0dc;
+    --text-dim: #6b7a8d;
+    --text-bright: #e8edf5;
+    --accent: #4a9eff;
+    --accent2: #2d7dd2;
+    --success: #3dba7a;
+    --warn: #e8a23a;
+    --danger: #e85a4a;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* Scanline texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  /* Top bar */
+  .topbar {
+    border-bottom: 1px solid var(--border);
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    background: rgba(13,15,18,0.95);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+  }
+
+  .topbar-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+
+  .topbar-sep { color: var(--border2); font-family: var(--mono); }
+
+  .topbar-title {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+  }
+
+  /* Layout */
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+    gap: 60px;
+    align-items: start;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    position: sticky;
+    top: 65px;
+    padding: 40px 0;
+    border-right: 1px solid var(--border);
+    padding-right: 32px;
+  }
+
+  .sidebar-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .sidebar nav a {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 3px;
+    transition: all 0.15s;
+    border-left: 2px solid transparent;
+  }
+
+  .sidebar nav a:hover {
+    color: var(--text-bright);
+    background: var(--bg3);
+    border-left-color: var(--accent);
+  }
+
+  .sidebar nav a.step-link {
+    padding-left: 22px;
+    font-size: 11px;
+  }
+
+  /* Main content */
+  .main {
+    padding: 40px 0 80px;
+  }
+
+  /* Hero */
+  .hero {
+    margin-bottom: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: var(--sans);
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--text-bright);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 strong {
+    font-weight: 600;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: var(--text-dim);
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  /* Time estimate pill */
+  .meta-pills {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+
+  .pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 2px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .pill-time { background: rgba(74,158,255,0.12); color: var(--accent); border: 1px solid rgba(74,158,255,0.25); }
+  .pill-level { background: rgba(61,186,122,0.1); color: var(--success); border: 1px solid rgba(61,186,122,0.2); }
+  .pill-os { background: rgba(200,208,220,0.08); color: var(--text); border: 1px solid var(--border2); }
+
+  /* Warning box */
+  .notice {
+    border-left: 3px solid var(--warn);
+    background: rgba(232,162,58,0.07);
+    padding: 16px 20px;
+    margin: 32px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .notice-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--warn);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .notice p { font-size: 14px; color: var(--text); }
+
+  .notice-info { border-left-color: var(--accent); background: rgba(74,158,255,0.07); }
+  .notice-info .notice-label { color: var(--accent); }
+
+  /* Section headers */
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+  }
+
+  .section h2 {
+    font-family: var(--sans);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-bright);
+    letter-spacing: -0.01em;
+  }
+
+  .section h3 {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-bright);
+    margin: 20px 0 8px;
+    letter-spacing: 0.01em;
+  }
+
+  .section p {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 12px;
+    max-width: 620px;
+  }
+
+  /* Step cards */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .step {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+  }
+
+  .step-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    background: rgba(74,158,255,0.1);
+    border: 1px solid rgba(74,158,255,0.2);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .step-title {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-bright);
+  }
+
+  .step-body {
+    padding: 0 20px 20px 64px;
+  }
+
+  .step-body p {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 12px;
+    max-width: 560px;
+  }
+
+  /* Code blocks */
+  .code-block {
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    padding: 16px 18px;
+    margin: 12px 0;
+    position: relative;
+    overflow-x: auto;
+  }
+
+  .code-block-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .code-block code {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: #7dd3fc;
+    display: block;
+    white-space: pre;
+  }
+
+  .code-block code .comment {
+    color: var(--text-dim);
+    font-style: italic;
+  }
+
+  .code-block code .prompt {
+    color: var(--success);
+    user-select: none;
+  }
+
+  /* Inline code */
+  code {
+    font-family: var(--mono);
+    font-size: 12px;
+    background: var(--bg3);
+    color: #7dd3fc;
+    padding: 2px 6px;
+    border-radius: 2px;
+    border: 1px solid var(--border2);
+  }
+
+  /* Download link */
+  .download-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent2);
+    color: white;
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+    transition: background 0.15s;
+    margin: 8px 0;
+  }
+
+  .download-link:hover { background: var(--accent); }
+
+  /* Checklist */
+  .checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 12px 0;
+  }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .check-box {
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--border2);
+    border-radius: 2px;
+    background: var(--bg3);
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--success);
+  }
+
+  /* SmartScreen guide */
+  .smartscreen {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    padding: 20px;
+    margin: 16px 0;
+  }
+
+  .smartscreen-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--warn);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .smartscreen-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    counter-reset: ss;
+  }
+
+  .smartscreen-step {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 13px;
+    color: var(--text);
+    counter-increment: ss;
+  }
+
+  .ss-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--warn);
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+
+  /* Success box */
+  .success-box {
+    background: rgba(61,186,122,0.08);
+    border: 1px solid rgba(61,186,122,0.2);
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+
+  .success-box-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--success);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .success-box p {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  /* Troubleshoot */
+  .trouble-item {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+
+  .trouble-q {
+    padding: 14px 18px;
+    background: var(--bg2);
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--warn);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .trouble-q::before {
+    content: '?';
+    font-weight: 700;
+    background: rgba(232,162,58,0.15);
+    border: 1px solid rgba(232,162,58,0.25);
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  .trouble-a {
+    padding: 14px 18px;
+    background: var(--bg);
+    font-size: 13px;
+    color: var(--text);
+    border-top: 1px solid var(--border);
+  }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-right a {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  @media (max-width: 760px) {
+    .layout { grid-template-columns: 1fr; gap: 0; padding: 0 20px; }
+    .sidebar { display: none; }
+    .topbar { padding: 12px 20px; }
+    .hero h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="topbar-logo" href="https://hoffmanlenses.org">HOFFMAN LENSES</a>
+  <span class="topbar-sep">/</span>
+  <span class="topbar-title">install-windows.html</span>
+</div>
+
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-label">Contents</div>
+    <nav>
+      <a href="#before">Before you start</a>
+      <a href="#step1" class="step-link">1 — Install Node.js</a>
+      <a href="#step2" class="step-link">2 — Install Git</a>
+      <a href="#step3" class="step-link">3 — Clone the repo</a>
+      <a href="#step4" class="step-link">4 — Install dependencies</a>
+      <a href="#step5" class="step-link">5 — Launch the browser</a>
+      <a href="#step6" class="step-link">6 — Download the AI model</a>
+      <a href="#smartscreen">SmartScreen warning</a>
+      <a href="#trouble">Troubleshooting</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+
+    <div class="hero">
+      <div class="hero-eyebrow">Installation Guide · Windows</div>
+      <h1>Run the <strong>Hoffman Browser</strong><br>from source</h1>
+      <p class="hero-desc">
+        A packaged installer is coming. In the meantime, anyone with basic
+        technical comfort can build and run the browser directly from the
+        source code in about 15 minutes.
+      </p>
+      <div class="meta-pills">
+        <span class="pill pill-time">⏱ ~15 minutes</span>
+        <span class="pill pill-level">Intermediate</span>
+        <span class="pill pill-os">Windows 10 / 11</span>
+      </div>
+    </div>
+
+    <div class="notice notice-info" id="before">
+      <div class="notice-label">What you're installing</div>
+      <p>The Hoffman Browser is built on Electron — the same technology as VS Code and Slack.
+      It runs a local AI model (Phi-3 Mini, ~2.2 GB) entirely on your machine.
+      No page content is ever transmitted anywhere. Analysis is private by design.</p>
+    </div>
+
+    <!-- Prerequisites checklist -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">PRE</span>
+        <h2>What you'll need</h2>
+      </div>
+      <ul class="checklist">
+        <li><span class="check-box">✓</span> Windows 10 or Windows 11</li>
+        <li><span class="check-box">✓</span> ~3 GB of free disk space (for the app and the AI model)</li>
+        <li><span class="check-box">✓</span> A terminal — Windows PowerShell or Command Prompt both work</li>
+        <li><span class="check-box">✓</span> Internet connection for the initial setup and model download</li>
+      </ul>
+    </div>
+
+    <!-- Steps -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">STEPS</span>
+        <h2>Installation</h2>
+      </div>
+
+      <div class="steps">
+
+        <!-- Step 1 -->
+        <div class="step" id="step1">
+          <div class="step-header">
+            <span class="step-num">01</span>
+            <span class="step-title">Install Node.js</span>
+          </div>
+          <div class="step-body">
+            <p>The Hoffman Browser runs on Node.js. Download and install the LTS version (Long Term Support — the stable one).</p>
+            <a class="download-link" href="https://nodejs.org/en/download" target="_blank">↗ Download Node.js (nodejs.org)</a>
+            <p>Run the installer with default settings. When it finishes, verify it worked by opening PowerShell and typing:</p>
+            <div class="code-block">
+              <div class="code-block-label">PowerShell</div>
+              <code><span class="prompt">PS> </span>node --version</code>
+            </div>
+            <p>You should see a version number like <code>v22.x.x</code>. If you do, Node.js is installed correctly.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step" id="step2">
+          <div class="step-header">
+            <span class="step-num">02</span>
+            <span class="step-title">Install Git</span>
+          </div>
+          <div class="step-body">
+            <p>Git is used to download the source code. If you already have Git installed, skip this step.</p>
+            <a class="download-link" href="https://git-scm.com/download/win" target="_blank">↗ Download Git for Windows (git-scm.com)</a>
+            <p>Run the installer with default settings. Verify it worked:</p>
+            <div class="code-block">
+              <div class="code-block-label">PowerShell</div>
+              <code><span class="prompt">PS> </span>git --version</code>
+            </div>
+            <p>You should see something like <code>git version 2.x.x</code>.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step" id="step3">
+          <div class="step-header">
+            <span class="step-num">03</span>
+            <span class="step-title">Clone the repository</span>
+          </div>
+          <div class="step-body">
+            <p>Choose a folder where you want the browser to live — your Documents folder works fine. Open PowerShell, navigate there, and run:</p>
+            <div class="code-block">
+              <div class="code-block-label">PowerShell</div>
+              <code><span class="prompt">PS> </span>cd $HOME\Documents
+<span class="prompt">PS> </span>git clone https://github.com/HoffmanLensesInitiative/hoffman-core.git
+<span class="prompt">PS> </span>cd hoffman-core\hoffman-browser</code>
+            </div>
+            <p>This downloads the full source code and moves you into the browser directory.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step" id="step4">
+          <div class="step-header">
+            <span class="step-num">04</span>
+            <span class="step-title">Install dependencies</span>
+          </div>
+          <div class="step-body">
+            <p>This downloads everything the browser needs to run. It may take a minute or two.</p>
+            <div class="code-block">
+              <div class="code-block-label">PowerShell — run from the hoffman-browser folder</div>
+              <code><span class="prompt">PS> </span>npm install</code>
+            </div>
+            <p>You'll see a lot of text scroll past — that's normal. Wait for it to finish and return to the prompt.</p>
+            <div class="notice">
+              <div class="notice-label">Windows Defender or antivirus alert?</div>
+              <p>Some antivirus tools flag Electron apps during the npm install step. This is a false positive — the Hoffman Browser is open-source and you can inspect every line of code at <a href="https://github.com/HoffmanLensesInitiative/hoffman-core" style="color:var(--accent)">github.com/HoffmanLensesInitiative</a>. Allow the operation to continue.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step" id="step5">
+          <div class="step-header">
+            <span class="step-num">05</span>
+            <span class="step-title">Launch the browser</span>
+          </div>
+          <div class="step-body">
+            <p>Start the Hoffman Browser with:</p>
+            <div class="code-block">
+              <div class="code-block-label">PowerShell</div>
+              <code><span class="prompt">PS> </span>npm start</code>
+            </div>
+            <p>The browser window will open. Keep the PowerShell window open in the background — it's running the app. You can minimize it.</p>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="step" id="step6">
+          <div class="step-header">
+            <span class="step-num">06</span>
+            <span class="step-title">Download the AI model</span>
+          </div>
+          <div class="step-body">
+            <p>On first launch, the Hoffman panel will show a <strong>Download Hoffman model</strong> button. Click it.</p>
+            <p>This downloads the Phi-3 Mini AI model — approximately <strong>2.2 GB</strong>. Download time depends on your connection speed. This is a one-time download. After that, the browser works entirely offline.</p>
+            <div class="notice notice-info">
+              <div class="notice-label">What is Phi-3 Mini?</div>
+              <p>Phi-3 Mini is a small, efficient AI model developed by Microsoft and released under the MIT open-source license. It runs entirely on your CPU or GPU — no account, no API key, no data leaves your machine.</p>
+            </div>
+
+            <div class="success-box">
+              <div class="success-box-title">You're set up</div>
+              <p>Once the model downloads, the browser is fully operational.</p>
+              <p>Navigate to any news site, social media page, or article. Click <strong>Analyze</strong> in the Hoffman panel. The AI reads the full page and identifies manipulation techniques — outrage engineering, false authority, war framing, tribal activation, and more.</p>
+              <p>The page sees nothing. Everything stays on your machine.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SmartScreen -->
+    <div class="section" id="smartscreen">
+      <div class="section-header">
+        <span class="section-num">NOTE</span>
+        <h2>Windows SmartScreen warning</h2>
+      </div>
+      <p>If Windows shows a SmartScreen warning when launching the app, this is because the
+      Hoffman Browser does not yet have a paid code-signing certificate. This is a cost barrier
+      for independent open-source projects — not a security issue.</p>
+      <p>You can verify the source code yourself at
+      <a href="https://github.com/HoffmanLensesInitiative/hoffman-core" style="color:var(--accent)">github.com/HoffmanLensesInitiative</a>.
+      To proceed past the warning:</p>
+
+      <div class="smartscreen">
+        <div class="smartscreen-title">Bypassing SmartScreen</div>
+        <div class="smartscreen-steps">
+          <div class="smartscreen-step">
+            <span class="ss-num">01</span>
+            <span>When the blue SmartScreen dialog appears, click <strong>"More info"</strong> — the small text link below the main message.</span>
+          </div>
+          <div class="smartscreen-step">
+            <span class="ss-num">02</span>
+            <span>A <strong>"Run anyway"</strong> button will appear at the bottom of the dialog. Click it.</span>
+          </div>
+          <div class="smartscreen-step">
+            <span class="ss-num">03</span>
+            <span>The browser will launch normally. You only need to do this once per installation.</span>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top:16px; font-size:13px; color:var(--text-dim)">
+        Note: Since you're running from source with <code>npm start</code>, you are unlikely to encounter
+        SmartScreen at all. This warning typically appears with packaged .exe installers.
+      </p>
+    </div>
+
+    <!-- Troubleshooting -->
+    <div class="section" id="trouble">
+      <div class="section-header">
+        <span class="section-num">HELP</span>
+        <h2>Troubleshooting</h2>
+      </div>
+
+      <div class="trouble-item">
+        <div class="trouble-q">'node' is not recognized as a command</div>
+        <div class="trouble-a">Node.js wasn't added to your PATH during installation. Restart PowerShell after installing Node.js, or reinstall Node.js and ensure "Add to PATH" is checked during setup.</div>
+      </div>
+
+      <div class="trouble-item">
+        <div class="trouble-q">npm install fails with permission errors</div>
+        <div class="trouble-a">Right-click PowerShell and choose "Run as Administrator," then try again. Alternatively, try running from your home directory rather than a system-protected folder.</div>
+      </div>
+
+      <div class="trouble-item">
+        <div class="trouble-q">The browser opens but the Analyze button does nothing</div>
+        <div class="trouble-a">The AI model hasn't been downloaded yet. Look for the "Download Hoffman model" button in the Hoffman panel and complete the one-time download (~2.2 GB).</div>
+      </div>
+
+      <div class="trouble-item">
+        <div class="trouble-q">Analysis is very slow</div>
+        <div class="trouble-a">The Phi-3 Mini model runs on CPU by default, which is slower than GPU. On a modern CPU, expect 5–15 seconds per analysis. GPU acceleration is supported — see the README for configuration details.</div>
+      </div>
+
+      <div class="trouble-item">
+        <div class="trouble-q">Model download stalls or fails</div>
+        <div class="trouble-a">Check your internet connection and try again. The model is approximately 2.2 GB and downloads from HuggingFace. If your connection is slow or interrupted, the download can be resumed by clicking the button again.</div>
+      </div>
+
+      <div class="trouble-item">
+        <div class="trouble-q">Something else went wrong</div>
+        <div class="trouble-a">Open an issue on GitHub at github.com/HoffmanLensesInitiative/hoffman-core — include the error message from your PowerShell window and your Windows version. The project is actively maintained.</div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-left">
+        © 2026 The Hoffman Lenses Initiative · MIT License<br>
+        "They deserved better than to be engagement metrics."
+      </div>
+      <div class="footer-right">
+        <a href="https://hoffmanlenses.org">hoffmanlenses.org →</a>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>
