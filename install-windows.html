@@ -598,7 +598,7 @@
       <a href="#step3" class="step-link">3 — Clone the repo</a>
       <a href="#step4" class="step-link">4 — Install dependencies</a>
       <a href="#step5" class="step-link">5 — Launch the browser</a>
-      <a href="#step6" class="step-link">6 — Download the AI model</a>
+      <a href="#step6" class="step-link">6 — Connect an AI engine</a>
       <a href="#smartscreen">SmartScreen warning</a>
       <a href="#trouble">Troubleshooting</a>
     </nav>
@@ -625,8 +625,11 @@
     <div class="notice notice-info" id="before">
       <div class="notice-label">What you're installing</div>
       <p>The Hoffman Browser is built on Electron — the same technology as VS Code and Slack.
-      It runs a local AI model (Phi-3 Mini, ~2.2 GB) entirely on your machine.
-      No page content is ever transmitted anywhere. Analysis is private by design.</p>
+      It supports two analysis modes: a <strong>local AI model</strong> (Phi-3 Mini, ~2.2 GB) that runs
+      entirely on your machine with zero data transmission, or your own
+      <strong>AI API key</strong> (Claude, ChatGPT, and others) for faster analysis.
+      Either way, only the visited page's text is ever used — no personal data, no browsing history,
+      no user identity.</p>
     </div>
 
     <!-- Prerequisites checklist -->
@@ -637,9 +640,10 @@
       </div>
       <ul class="checklist">
         <li><span class="check-box">✓</span> Windows 10 or Windows 11</li>
-        <li><span class="check-box">✓</span> ~3 GB of free disk space (for the app and the AI model)</li>
         <li><span class="check-box">✓</span> A terminal — Windows PowerShell or Command Prompt both work</li>
-        <li><span class="check-box">✓</span> Internet connection for the initial setup and model download</li>
+        <li><span class="check-box">✓</span> Internet connection for the initial setup</li>
+        <li><span class="check-box">✓</span> <strong>Local model path:</strong> ~3 GB free disk space + no API account needed</li>
+        <li><span class="check-box">✓</span> <strong>API path:</strong> An API key from Anthropic, OpenAI, or compatible service + no large download</li>
       </ul>
     </div>
 
@@ -746,21 +750,35 @@
         <div class="step" id="step6">
           <div class="step-header">
             <span class="step-num">06</span>
-            <span class="step-title">Download the AI model</span>
+            <span class="step-title">Connect an AI engine</span>
           </div>
           <div class="step-body">
-            <p>On first launch, the Hoffman panel will show a <strong>Download Hoffman model</strong> button. Click it.</p>
-            <p>This downloads the Phi-3 Mini AI model — approximately <strong>2.2 GB</strong>. Download time depends on your connection speed. This is a one-time download. After that, the browser works entirely offline.</p>
+            <p>The Hoffman Browser supports two analysis modes. Choose the one that fits your situation — you can switch between them at any time in Settings.</p>
+
+            <h3>Option A — Local AI model (offline, fully private)</h3>
+            <p>On first launch, the Hoffman panel will show a <strong>Download Hoffman model</strong> button. Click it to download the Phi-3 Mini AI model (~2.2 GB). This is a one-time download. After that, the browser works entirely offline — nothing ever leaves your machine.</p>
+
             <div class="notice notice-info">
               <div class="notice-label">What is Phi-3 Mini?</div>
-              <p>Phi-3 Mini is a small, efficient AI model developed by Microsoft and released under the MIT open-source license. It runs entirely on your CPU or GPU — no account, no API key, no data leaves your machine.</p>
+              <p>Phi-3 Mini is a small, efficient AI model developed by Microsoft, released under the MIT open-source license. It runs on your CPU or GPU. Typical analysis time: 5–15 seconds on a modern CPU, 2–5 seconds with GPU acceleration.</p>
+            </div>
+
+            <h3>Option B — Your own AI API key (faster, no download)</h3>
+            <p>If you already have an account with Anthropic (Claude), OpenAI (ChatGPT), or a compatible AI service, you can connect your API key instead. Analysis runs in 2–5 seconds with no model download required.</p>
+            <p>In the Hoffman panel, open <strong>Settings → AI Engine</strong> and enter your API key. The browser will use your account for analysis going forward.</p>
+
+            <div class="notice">
+              <div class="notice-label">What gets sent — and when</div>
+              <p><strong>Analysis:</strong> Only the text content of the page you are analyzing is sent to the AI service — the same text you can read on screen. No personal data, no browsing history, no user identity, no session information is transmitted.</p>
+              <p><strong>BMID submission:</strong> After an analysis, you can optionally submit the findings to the Behavioral Manipulation Intelligence Database to help build the public record. This is a deliberate, voluntary action — a button you choose to click. Nothing is ever submitted automatically.</p>
             </div>
 
             <div class="success-box">
               <div class="success-box-title">You're set up</div>
-              <p>Once the model downloads, the browser is fully operational.</p>
-              <p>Navigate to any news site, social media page, or article. Click <strong>Analyze</strong> in the Hoffman panel. The AI reads the full page and identifies manipulation techniques — outrage engineering, false authority, war framing, tribal activation, and more.</p>
-              <p>The page sees nothing. Everything stays on your machine.</p>
+              <p>Whether you're using the local model or an API key, the experience is the same.</p>
+              <p>Navigate to any news site, social media page, or article. Click <strong>Analyze</strong> in the Hoffman panel. The AI reads the full page and identifies manipulation techniques — outrage engineering, false authority, war framing, tribal activation, and more. It quotes the exact language being used and explains what it is designed to do to you.</p>
+              <p>The page you're visiting sees nothing. Your identity is never part of the analysis.</p>
+              <p><strong>Contributing to the BMID database is entirely voluntary.</strong> After an analysis, you'll see an option to submit the findings to the Behavioral Manipulation Intelligence Database. Click to submit, or don't — the choice is always yours. Nothing is ever sent without your explicit action.</p>
             </div>
           </div>
         </div>
@@ -824,7 +842,7 @@
 
       <div class="trouble-item">
         <div class="trouble-q">The browser opens but the Analyze button does nothing</div>
-        <div class="trouble-a">The AI model hasn't been downloaded yet. Look for the "Download Hoffman model" button in the Hoffman panel and complete the one-time download (~2.2 GB).</div>
+        <div class="trouble-a">No AI engine is connected yet. Either click <strong>Download Hoffman model</strong> in the Hoffman panel to download the local model (~2.2 GB), or go to <strong>Settings → AI Engine</strong> and enter your Anthropic, OpenAI, or compatible API key.</div>
       </div>
 
       <div class="trouble-item">
